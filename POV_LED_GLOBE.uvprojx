@@ -134,10 +134,10 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4101</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
-          <bUseTDR>0</bUseTDR>
-          <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
+          <bUseTDR>1</bUseTDR>
+          <Flash2>BIN\UL2CM3.DLL</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
@@ -371,7 +371,7 @@
             <ScatterFile></ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
-            <Misc></Misc>
+            <Misc>--show_parent_lib --show_full_path</Misc>
             <LinkerInputFile></LinkerInputFile>
             <DisabledWarnings></DisabledWarnings>
           </LDads>
@@ -450,6 +450,36 @@
               <FileName>stm32f10x_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\User\stm32f10x_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>User_GPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\User_GPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>User_GPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\User_GPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>User_Time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\User_Time.c</FilePath>
+            </File>
+            <File>
+              <FileName>User_Time.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\User_Time.h</FilePath>
+            </File>
+            <File>
+              <FileName>User_IT.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\User_IT.c</FilePath>
+            </File>
+            <File>
+              <FileName>User_IT.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\User_IT.h</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
