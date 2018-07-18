@@ -1,5 +1,6 @@
 .\objects\main.o: User\main.c
-.\objects\main.o: .\User\User_GPIO.h
+.\objects\main.o: .\User\Function.h
+.\objects\main.o: .\User\Init.h
 .\objects\main.o: .\User\stm32f10x_conf.h
 .\objects\main.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
 .\objects\main.o: .\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
@@ -29,5 +30,3 @@
 .\objects\main.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\main.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\main.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
-.\objects\main.o: .\User\User_Time.h
-.\objects\main.o: .\User\User_IT.h

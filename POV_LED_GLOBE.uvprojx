@@ -134,10 +134,10 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>4096</DriverSelection>
+            <DriverSelection>4101</DriverSelection>
           </Flash1>
-          <bUseTDR>1</bUseTDR>
-          <Flash2>BIN\UL2CM3.DLL</Flash2>
+          <bUseTDR>0</bUseTDR>
+          <Flash2>STLink\ST-LINKIII-KEIL_SWO.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
@@ -452,34 +452,24 @@
               <FilePath>.\User\stm32f10x_conf.h</FilePath>
             </File>
             <File>
-              <FileName>User_GPIO.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\User\User_GPIO.c</FilePath>
-            </File>
-            <File>
-              <FileName>User_GPIO.h</FileName>
+              <FileName>Init.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\User\User_GPIO.h</FilePath>
+              <FilePath>.\User\Init.h</FilePath>
             </File>
             <File>
-              <FileName>User_Time.c</FileName>
+              <FileName>Init.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User\User_Time.c</FilePath>
+              <FilePath>.\User\Init.c</FilePath>
             </File>
             <File>
-              <FileName>User_Time.h</FileName>
+              <FileName>Function.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\User\User_Time.h</FilePath>
+              <FilePath>.\User\Function.h</FilePath>
             </File>
             <File>
-              <FileName>User_IT.c</FileName>
+              <FileName>Function.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User\User_IT.c</FilePath>
-            </File>
-            <File>
-              <FileName>User_IT.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\User\User_IT.h</FilePath>
+              <FilePath>.\User\Function.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
