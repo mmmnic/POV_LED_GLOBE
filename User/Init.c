@@ -31,7 +31,7 @@ void Init_GPIO(void)
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
 	// Set Pin A1 Low
-	GPIO_ResetBits(GPIOA, GPIO_Pin_2);
+	GPIO_ResetBits(GPIOA, GPIO_Pin_1);
 	// Set Pin A2 Low
 	GPIO_ResetBits(GPIOA, GPIO_Pin_2);
 	// Set Pin A3 Low

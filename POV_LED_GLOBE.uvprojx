@@ -472,9 +472,14 @@
               <FilePath>.\User\Function.c</FilePath>
             </File>
             <File>
-              <FileName>main.c</FileName>
+              <FileName>Main.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\Main.h</FilePath>
+            </File>
+            <File>
+              <FileName>Main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\User\main.c</FilePath>
+              <FilePath>.\User\Main.c</FilePath>
             </File>
           </Files>
         </Group>

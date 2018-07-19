@@ -1,4 +1,4 @@
-.\objects\main.o: User\main.c
+.\objects\main.o: User\Main.c
 .\objects\main.o: .\User\Function.h
 .\objects\main.o: .\User\Init.h
 .\objects\main.o: .\User\stm32f10x_conf.h
