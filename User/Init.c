@@ -50,6 +50,15 @@ void Init_Delay(void)
 	SysTick_Config(SystemCoreClock/1000000);
 }
 
+/**
+  * @brief  Config Systick
+  * @param  Divide for divde system code clock
+  * @retval None
+  */
+void Init_Timer(void)
+{
+	
+}
 
 /**
   * @brief  Handler interrupt of Systick

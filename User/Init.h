@@ -5,5 +5,7 @@
 // Function for init
 void Init_GPIO(void);
 void Init_Delay(void);
+void Init_Timer(void);
 void SysTick_Handler(void);
 void DelayUs(uint32_t TimeDelay);
+
