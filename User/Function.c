@@ -1,51 +1,13 @@
 // Include
 #include <Function.h>
 
+/* Private variables ---------------------------------------------------------*/
+extern uint32_t TimingDelay;
+extern uint32_t Timing;
 uint8_t DelayOneDegree=0;
 
 /**
-  * @brief  Clear data for all LED
-  * @param  none
-  * @retval None
-  */
-void ClearData(void)
-{
-	// Make sure Pin A4 is High to set LOW
-	GPIO_SetBits(GPIOA, GPIO_Pin_4);
-	// RESET Pin A4 to clear Data
-	GPIO_ResetBits(GPIOA, GPIO_Pin_4);
-	// Send Data
-	SendData();
-}	
-
-/**
-  * @brief  Clear data for all LED
-  * @param  
-  * @retval None
-  */
-void ShiftLED(void)
-{
-	// Make sure Pin A2 is LOW to set HIGH
-	GPIO_ResetBits(GPIOA, GPIO_Pin_2);
-	// SET Pin A3 to send Data
-	GPIO_SetBits(GPIOA, GPIO_Pin_2);
-}
-
-/**
-  * @brief  InputData for LED
-  * @param  none
-  * @retval None
-  */
-void SendData(void)
-{
-	// Make sure Pin A3 is LOW to set HIGH
-	GPIO_ResetBits(GPIOA, GPIO_Pin_3);
-	// SET Pin A3 to send Data
-	GPIO_SetBits(GPIOA, GPIO_Pin_3);
-}
-
-/**
-  * @brief  InputData for LED
+  * @brief  InputData for IC
   * @param  Input Binary 1 or 0, 1 is set to High, 0 is set to low
   * @retval None
   */
@@ -60,6 +22,47 @@ void InputData(uint8_t Bit)
 		GPIO_ResetBits(GPIOA, GPIO_Pin_1);
 	}
 }
+
+/**
+  * @brief  Shift bit of IC
+  * @param  None
+  * @retval None
+  */
+void ShiftLED(void)
+{
+	// Make sure Pin A2 is LOW to set HIGH
+	GPIO_ResetBits(GPIOA, GPIO_Pin_2);
+	// SET Pin A3 to send Data
+	GPIO_SetBits(GPIOA, GPIO_Pin_2);
+}
+
+/**
+  * @brief  Send data to IC
+  * @param  none
+  * @retval None
+  */
+void SendData(void)
+{
+	// Make sure Pin A3 is LOW to set HIGH
+	GPIO_ResetBits(GPIOA, GPIO_Pin_3);
+	// SET Pin A3 to send Data
+	GPIO_SetBits(GPIOA, GPIO_Pin_3);
+}
+
+/**
+  * @brief  Clear Data on all IC (LED is shining)
+  * @param  none
+  * @retval None
+  */
+void ClearData(void)
+{
+	// Make sure Pin A4 is High to set LOW
+	GPIO_SetBits(GPIOA, GPIO_Pin_4);
+	// RESET Pin A4 to clear Data
+	GPIO_ResetBits(GPIOA, GPIO_Pin_4);
+	// Send Data
+	SendData();
+}	
 
 /**
   * @brief  Filter data to send data and shift each bit
@@ -586,13 +589,29 @@ void DisplayWord(char *s)
 }
 
 /**
-  * @brief  Choose an angle to start display
-  * @param  Input a angle from 0 -> 360
+  * @brief  Turn enable or disable for Timer 
+  * @param  TIMx for choose Timer, Bit 1 to set enable, 0 to disable
   * @retval None
   */
-void StartPosition(uint32_t Pos)
+void Timer_On(TIM_TypeDef* TIMx, uint8_t Bit)
 {
-	
-	Pos *= DelayOneDegree;
-	DelayUs(Pos);
+	if (Bit)
+	{
+		TIM_Cmd(TIMx, ENABLE);
+	}
+	else
+	{
+		TIM_Cmd(TIMx, DISABLE);
+	}
+}
+
+/**
+  * @brief  Delay at us
+  * @param  Global para TimingDelay, private para TimeDelay for input delay time
+  * @retval None
+  */
+void DelayUs(uint32_t TimeDelay)
+{
+	TimingDelay = TimeDelay;
+	while(TimingDelay);
 }

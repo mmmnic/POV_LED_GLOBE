@@ -1,9 +1,9 @@
 #include <Init.h>
 
-
 // Global para
-uint32_t TimingDelay;
-
+uint32_t 	TimingDelay;
+uint32_t 	Timing;
+uint8_t		CheckSpin=0;
 
 /**
   * @brief  Config Pin A1, A2, A3, A4 as Ouput, B9 as input
@@ -45,7 +45,7 @@ void Init_GPIO(void)
   * @param  Divide for divde system code clock
   * @retval None
   */
-void Init_Delay(void)
+void Init_SysTick(void)
 {
 	SysTick_Config(SystemCoreClock/1000000);
 }
@@ -57,29 +57,62 @@ void Init_Delay(void)
   */
 void Init_Timer(void)
 {
+	TIM_TimeBaseInitTypeDef 	TIM_TimeBaseStructure;
+	NVIC_InitTypeDef 					NVIC_Structure;
 	
+	// Enable clock
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	// Configure TIM2
+	TIM_TimeBaseStructure.TIM_Prescaler = 1;
+	TIM_TimeBaseStructure.TIM_Period = 35;
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
+	TIM_ClearFlag(TIM2, TIM_FLAG_Update);
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
+	
+	// Configure Interrupt for TIM2
+	NVIC_Structure.NVIC_IRQChannel = TIM2_IRQn;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_Structure);
 }
 
 /**
-  * @brief  Handler interrupt of Systick
-  * @param  Global para TimingDelay
+  * @brief  Init for Interrupt
+  * @param  None
   * @retval None
   */
-void SysTick_Handler(void)
+void Init_Interrupt(void)
 {
-	if (TimingDelay != 0x00)
-	{
-		TimingDelay--;
-	}
-}
-
-/**
-  * @brief  Delay at us
-  * @param  Global para TimingDelay, private para TimeDelay for counting
-  * @retval None
-  */
-void DelayUs(uint32_t TimeDelay)
-{
-	TimingDelay = TimeDelay;
-	while(TimingDelay);
+	GPIO_InitTypeDef 	GPIO_Structure;
+	EXTI_InitTypeDef	EXTI_Structure;
+	NVIC_InitTypeDef	NVIC_Structure;
+	
+	// Open clock
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE);
+	
+	// Configure
+	GPIO_Structure.GPIO_Pin = GPIO_Pin_9;
+	GPIO_Structure.GPIO_Mode = GPIO_Mode_IPU;
+	GPIO_Structure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &GPIO_Structure);
+	
+	// Mapping
+	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource9);
+	// Clear pending
+	EXTI_ClearITPendingBit(EXTI_Line9);
+	// EXTI LINE Config
+	EXTI_Structure.EXTI_Line = EXTI_Line9;
+	EXTI_Structure.EXTI_Mode = EXTI_Mode_Interrupt;
+	EXTI_Structure.EXTI_Trigger = EXTI_Trigger_Falling;
+	EXTI_Structure.EXTI_LineCmd = ENABLE;
+	EXTI_Init(&EXTI_Structure);
+	
+	//NVIC Config
+	NVIC_Structure.NVIC_IRQChannel = EXTI9_5_IRQn;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_Structure);
 }
