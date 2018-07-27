@@ -3,7 +3,9 @@
 // Global para
 uint32_t 	TimingDelay;
 uint32_t 	Timing;
+uint32_t 	TimePerRound=0;
 uint8_t		CheckSpin=0;
+uint8_t		TimePerAngle;
 
 /**
   * @brief  Config Pin A1, A2, A3, A4 as Ouput, B9 as input
@@ -62,6 +64,8 @@ void Init_Timer(void)
 	
 	// Enable clock
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+	
 	// Configure TIM2
 	TIM_TimeBaseStructure.TIM_Prescaler = 1;
 	TIM_TimeBaseStructure.TIM_Period = 35;
@@ -73,6 +77,21 @@ void Init_Timer(void)
 	// Configure Interrupt for TIM2
 	NVIC_Structure.NVIC_IRQChannel = TIM2_IRQn;
 	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_Structure);
+	
+	// Configure TIM3
+	TIM_TimeBaseStructure.TIM_Prescaler = 1;
+	TIM_TimeBaseStructure.TIM_Period = 35;
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
+	TIM_ClearFlag(TIM3, TIM_FLAG_Update);
+	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
+	
+	// Configure Interrupt for TIM3
+	NVIC_Structure.NVIC_IRQChannel = TIM3_IRQn;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 3;
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);
@@ -105,7 +124,7 @@ void Init_Interrupt(void)
 	// EXTI LINE Config
 	EXTI_Structure.EXTI_Line = EXTI_Line9;
 	EXTI_Structure.EXTI_Mode = EXTI_Mode_Interrupt;
-	EXTI_Structure.EXTI_Trigger = EXTI_Trigger_Falling;
+	EXTI_Structure.EXTI_Trigger = EXTI_Trigger_Rising_Falling;
 	EXTI_Structure.EXTI_LineCmd = ENABLE;
 	EXTI_Init(&EXTI_Structure);
 	

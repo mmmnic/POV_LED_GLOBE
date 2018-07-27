@@ -38,7 +38,9 @@
 /* Private variables ---------------------------------------------------------*/
 extern uint32_t TimingDelay;
 extern uint32_t Timing;
+extern uint32_t TimePerRound;
 extern uint8_t	CheckSpin;
+extern uint8_t	TimePerAngle;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -153,15 +155,25 @@ void TIM2_IRQHandler(void)
 {
   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
   {
-		Timing--;
-		if (!(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9)))
-		{
-			CheckSpin++;
-		}
-		else
-			CheckSpin=0;
+		TPR++;
+		
+		
 		
     TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
+  }
+}
+
+/**
+  * @brief  This function handles TIM3 global interrupt request. count amount time to complete previous cycle
+  * @param  None
+  * @retval None
+  */
+void TIM3_IRQHandler(void)
+{
+  if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
+  {
+		TimePerRound++;
+    TIM_ClearITPendingBit(TIM3, TIM_FLAG_Update);
   }
 }
 
@@ -174,13 +186,21 @@ void EXTI9_5_IRQHandler(void)
 {
 	if (EXTI_GetITStatus(EXTI_Line9) != RESET)
 	{
-		if (CheckSpin<=50)
+		if (!(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9)))
 		{
-			GPIO_ResetBits(GPIOC, GPIO_Pin_13);
+			Timer_On(TIM3, 0);
+			TimePerAngle=TimePerRound/360;
+			TimePerRound = 0;
+		}
+		else //if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9))
+		{
+			Timer_On(TIM3, 1);
 		}
 		EXTI_ClearITPendingBit(EXTI_Line9);
 	}
 }
+
+
 
 /******************************************************************************/
 /*                 STM32F10x Peripherals Interrupt Handlers                   */

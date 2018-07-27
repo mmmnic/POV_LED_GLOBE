@@ -25,7 +25,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f10x.h"
-
+#include "Function.h"
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
@@ -41,6 +41,7 @@ void DebugMon_Handler(void);
 void PendSV_Handler(void);
 void SysTick_Handler(void);
 void TIM2_IRQHandler(void);
+void TIM3_IRQHandler(void);
 void EXTI9_5_IRQHandler(void);
 					 
 #endif /* __STM32F10x_IT_H */
