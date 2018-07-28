@@ -2,9 +2,7 @@
 #include <Function.h>
 
 /* Private variables ---------------------------------------------------------*/
-extern uint32_t TimingDelay;
-extern uint32_t Timing;
-uint8_t DelayOneDegree=0;
+
 
 /**
   * @brief  InputData for IC
@@ -142,7 +140,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(A[0][i],A[1][i],A[2][i],A[3][i],A[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -159,7 +157,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(B[0][i],B[1][i],B[2][i],B[3][i],B[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -176,7 +174,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(C[0][i],C[1][i],C[2][i],C[3][i],C[4][i]);
-			DelayUs(500000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -193,7 +191,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(D[0][i],D[1][i],D[2][i],D[3][i],D[4][i]);
-			DelayUs(500000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -210,7 +208,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(E[0][i],E[1][i],E[2][i],E[3][i],E[4][i]);
-			DelayUs(500000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -227,7 +225,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(F[0][i],F[1][i],F[2][i],F[3][i],F[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -244,7 +242,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(G[0][i],G[1][i],G[2][i],G[3][i],G[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -261,7 +259,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(H[0][i],H[1][i],H[2][i],H[3][i],H[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -278,7 +276,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(I[0][i],I[1][i],I[2][i],I[3][i],I[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -295,7 +293,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(J[0][i],J[1][i],J[2][i],J[3][i],J[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -312,7 +310,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(K[0][i],K[1][i],K[2][i],K[3][i],K[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -330,7 +328,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(L[0][i],L[1][i],L[2][i],L[3][i],L[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -347,7 +345,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(M[0][i],M[1][i],M[2][i],M[3][i],M[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -364,7 +362,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(N[0][i],N[1][i],N[2][i],N[3][i],N[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -381,7 +379,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(O[0][i],O[1][i],O[2][i],O[3][i],O[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -398,7 +396,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(P[0][i],P[1][i],P[2][i],P[3][i],P[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -415,7 +413,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(Q[0][i],Q[1][i],Q[2][i],Q[3][i],Q[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -432,7 +430,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(R[0][i],R[1][i],R[2][i],R[3][i],R[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -449,7 +447,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(S[0][i],S[1][i],S[2][i],S[3][i],S[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -466,7 +464,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(T[0][i],T[1][i],T[2][i],T[3][i],T[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -483,7 +481,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(U[0][i],U[1][i],U[2][i],U[3][i],U[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -500,7 +498,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(V[0][i],V[1][i],V[2][i],V[3][i],V[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -517,7 +515,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(W[0][i],W[1][i],W[2][i],W[3][i],W[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -534,7 +532,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(X[0][i],X[1][i],X[2][i],X[3][i],X[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -551,7 +549,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(Y[0][i],Y[1][i],Y[2][i],Y[3][i],Y[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 	
@@ -568,7 +566,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(Z[0][i],Z[1][i],Z[2][i],Z[3][i],Z[4][i]);
-			DelayUs(10000);
+			DelayUs(TimePerAngle);
 		}
 	}
 }
@@ -586,6 +584,7 @@ void DisplayWord(char *s)
 		DisplayChar(s[i]);
 		i++;
 	}
+	DelayUs(TimePerAngle*2);
 }
 
 /**

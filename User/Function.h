@@ -1,6 +1,9 @@
 // Include
 #include <Init.h>
 
+extern uint32_t TimingDelay;
+extern uint8_t	TimePerAngle;
+
 void InputData(uint8_t Bit);
 void ShiftLED(void);
 void SendData(void);

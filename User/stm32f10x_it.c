@@ -36,11 +36,8 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-extern uint32_t TimingDelay;
-extern uint32_t Timing;
-extern uint32_t TimePerRound;
-extern uint8_t	CheckSpin;
-extern uint8_t	TimePerAngle;
+uint32_t 	TimePerRound=0;
+
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -155,7 +152,6 @@ void TIM2_IRQHandler(void)
 {
   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
   {
-		TPR++;
 		
 		
 		

@@ -30,6 +30,13 @@
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+/* Global variables ---------------------------------------------------------*/
+// Global para
+uint32_t 	TimingDelay;
+uint8_t		TimePerAngle=5;
+
+
+
 
 void NMI_Handler(void);
 void HardFault_Handler(void);

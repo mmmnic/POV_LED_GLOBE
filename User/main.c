@@ -7,18 +7,11 @@ int main(void)
 	Init_Timer();
 	Init_Interrupt();
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-	
-	GPIO_InitTypeDef GPIO;
-	GPIO.GPIO_Pin = GPIO_Pin_13;
-	GPIO.GPIO_Mode = GPIO_Mode_Out_PP;
-	GPIO.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOC, &GPIO);
-	GPIO_SetBits(GPIOC, GPIO_Pin_13);
-	
 	while (1)
 	{
-		DelayUs(1000000);
-		GPIO_SetBits(GPIOC, GPIO_Pin_13);
+		DelayUs(TimePerAngle*270);
+		DisplayWord("Hello");
+		DelayUs(TimePerAngle*5);
+		DisplayWord("World");
 	}
 }

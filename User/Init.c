@@ -1,12 +1,5 @@
 #include <Init.h>
 
-// Global para
-uint32_t 	TimingDelay;
-uint32_t 	Timing;
-uint32_t 	TimePerRound=0;
-uint8_t		CheckSpin=0;
-uint8_t		TimePerAngle;
-
 /**
   * @brief  Config Pin A1, A2, A3, A4 as Ouput, B9 as input
   * @param  None
