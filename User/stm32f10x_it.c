@@ -152,9 +152,7 @@ void TIM2_IRQHandler(void)
 {
   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
   {
-		
-		
-		
+		TimingPos++;
     TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
   }
 }
@@ -187,6 +185,7 @@ void EXTI9_5_IRQHandler(void)
 			Timer_On(TIM3, 0);
 			TimePerAngle=TimePerRound/360;
 			TimePerRound = 0;
+			TimingPos=0;
 		}
 		else //if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9))
 		{

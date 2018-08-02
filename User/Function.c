@@ -69,37 +69,37 @@ void ClearData(void)
   */
 void DisplayOneIC(uint8_t Data)
 {
-	if (Data & 0b10000000)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b10000000)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 	
-	if (Data & 0b01000000)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b01000000)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 	
-	if (Data & 0b00100000)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b00100000)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 	
 	
-	if (Data & 0b00010000)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b00010000)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 	
-	if (Data & 0b00001000)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b00001000)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 
-	if (Data & 0b00000100)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b00000100)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 	
-	if (Data & 0b00000010)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b00000010)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 	
-	if (Data & 0b00000001)			InputData(0);
-	else												InputData(1);
+	if (Data & 0b00000001)			InputData(1);
+	else												InputData(0);
 	ShiftLED();
 }
 
@@ -584,6 +584,7 @@ void DisplayWord(char *s)
 		DisplayChar(s[i]);
 		i++;
 	}
+	DisplayLine(0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000);
 	DelayUs(TimePerAngle*2);
 }
 
@@ -613,4 +614,23 @@ void DelayUs(uint32_t TimeDelay)
 {
 	TimingDelay = TimeDelay;
 	while(TimingDelay);
+}
+
+uint8_t StartPos(uint16_t Pos)
+{
+	int32_t temp=0;
+	
+	if (TimingPos>=0 && TimingPos <= 180*TimePerAngle)
+	{
+		temp = TimingPos + 180*TimePerAngle;
+	}
+	else if (TimingPos>180*TimePerAngle && TimingPos <= 359*TimePerAngle)
+	{	
+		temp = TimingPos - 180*TimePerAngle;
+	}
+	
+	if (temp >= Pos*TimePerAngle-10 && temp<= Pos*TimePerAngle+10)
+		return 1;
+	else
+		return 0;
 }

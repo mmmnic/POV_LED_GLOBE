@@ -33,6 +33,7 @@
 /* Global variables ---------------------------------------------------------*/
 // Global para
 uint32_t 	TimingDelay;
+int32_t		TimingPos=0;
 uint8_t		TimePerAngle=5;
 
 

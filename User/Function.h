@@ -2,7 +2,9 @@
 #include <Init.h>
 
 extern uint32_t TimingDelay;
+extern int32_t	TimingPos;
 extern uint8_t	TimePerAngle;
+
 
 void InputData(uint8_t Bit);
 void ShiftLED(void);
@@ -14,3 +16,4 @@ void DisplayChar(char c);
 void DisplayWord(char *s);
 void Timer_On(TIM_TypeDef* TIMx, uint8_t Bit);
 void DelayUs(uint32_t TimeDelay);
+uint8_t StartPos(uint16_t Pos);
