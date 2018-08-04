@@ -582,10 +582,10 @@ void DisplayWord(char *s)
 	while (s[i]!='\n')
 	{
 		DisplayChar(s[i]);
+		DelayUs(TimePerAngle);
 		i++;
 	}
 	DisplayLine(0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000);
-	DelayUs(TimePerAngle*2);
 }
 
 /**
