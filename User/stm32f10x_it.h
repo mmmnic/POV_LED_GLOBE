@@ -32,9 +32,9 @@
 /* Exported functions ------------------------------------------------------- */
 /* Global variables ---------------------------------------------------------*/
 // Global para
-uint32_t 	TimingDelay;
-int32_t		TimingPos=0;
-uint8_t		TimePerAngle=5;
+uint32_t 	TimingDelay=0;
+uint32_t	TimingPos=0;
+uint8_t		TimePerAngle=0;
 
 
 

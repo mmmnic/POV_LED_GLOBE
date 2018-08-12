@@ -73,6 +73,8 @@ void Init_Timer(void)
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);
+	// Enable TIM2
+	TIM_Cmd(TIM2, ENABLE);
 	
 	// Configure TIM3
 	TIM_TimeBaseStructure.TIM_Prescaler = 1;

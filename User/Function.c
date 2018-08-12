@@ -582,27 +582,9 @@ void DisplayWord(char *s)
 	while (s[i]!='\n')
 	{
 		DisplayChar(s[i]);
-		DelayUs(TimePerAngle);
 		i++;
 	}
-	DisplayLine(0b00000000, 0b00000000, 0b00000000, 0b00000000, 0b00000000);
-}
-
-/**
-  * @brief  Turn enable or disable for Timer 
-  * @param  TIMx for choose Timer, Bit 1 to set enable, 0 to disable
-  * @retval None
-  */
-void Timer_On(TIM_TypeDef* TIMx, uint8_t Bit)
-{
-	if (Bit)
-	{
-		TIM_Cmd(TIMx, ENABLE);
-	}
-	else
-	{
-		TIM_Cmd(TIMx, DISABLE);
-	}
+	ClearData();
 }
 
 /**
@@ -620,16 +602,18 @@ uint8_t StartPos(uint16_t Pos)
 {
 	int32_t temp=0;
 	
-	if (TimingPos>=0 && TimingPos <= 180*TimePerAngle)
+	// LED at right side (180° - 360°)
+	if (TimingPos <= 180*TimePerAngle)
 	{
 		temp = TimingPos + 180*TimePerAngle;
 	}
-	else if (TimingPos>180*TimePerAngle && TimingPos <= 359*TimePerAngle)
+	// LED at left side (0° - 180°)
+	else if (TimingPos>180*TimePerAngle && TimingPos <= 350*TimePerAngle)
 	{	
 		temp = TimingPos - 180*TimePerAngle;
 	}
 	
-	if (temp >= Pos*TimePerAngle-10 && temp<= Pos*TimePerAngle+10)
+	if (temp >= Pos*TimePerAngle-TimePerAngle/2 && temp<= Pos*TimePerAngle+TimePerAngle/2)
 		return 1;
 	else
 		return 0;
