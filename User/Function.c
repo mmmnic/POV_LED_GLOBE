@@ -598,22 +598,15 @@ void DelayUs(uint32_t TimeDelay)
 	while(TimingDelay);
 }
 
+/**
+  * @brief  Check position of hall sensor
+  * @param  Pos for input user's position, StandardError amount of reality and theory,  
+  * @retval 1 (true) or 0 (false)
+  */
 uint8_t StartPos(uint16_t Pos)
 {
-	int32_t temp=0;
-	
-	// LED at right side (180° - 360°)
-	if (TimingPos <= 180*TimePerAngle)
-	{
-		temp = TimingPos + 180*TimePerAngle;
-	}
-	// LED at left side (0° - 180°)
-	else if (TimingPos>180*TimePerAngle && TimingPos <= 350*TimePerAngle)
-	{	
-		temp = TimingPos - 180*TimePerAngle;
-	}
-	
-	if (temp >= Pos*TimePerAngle-TimePerAngle/2 && temp<= Pos*TimePerAngle+TimePerAngle/2)
+	uint16_t StandardError = TimePerAngle*2;
+	if (TimingPos >= Pos*TimePerAngle-StandardError && TimingPos <= Pos*TimePerAngle+StandardError)
 		return 1;
 	else
 		return 0;

@@ -183,7 +183,7 @@ void EXTI9_5_IRQHandler(void)
 		if (!(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9)))
 		{
 			TIM_Cmd(TIM3, DISABLE);
-			TimePerAngle=TimePerRound/350;
+			TimePerAngle=TimePerRound/358;
 			TimePerRound = 0;
 			TimingPos=0;
 		}

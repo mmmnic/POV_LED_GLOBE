@@ -19,9 +19,9 @@ void Init_GPIO(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	// Config GPIOB, Pin 9 as input
+	// Config GPIOB, Pin 9 as input, Pull up
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 	
@@ -69,7 +69,7 @@ void Init_Timer(void)
 	
 	// Configure Interrupt for TIM2
 	NVIC_Structure.NVIC_IRQChannel = TIM2_IRQn;
-	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);
@@ -86,7 +86,7 @@ void Init_Timer(void)
 	
 	// Configure Interrupt for TIM3
 	NVIC_Structure.NVIC_IRQChannel = TIM3_IRQn;
-	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 3;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 2;
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);
@@ -99,18 +99,11 @@ void Init_Timer(void)
   */
 void Init_Interrupt(void)
 {
-	GPIO_InitTypeDef 	GPIO_Structure;
 	EXTI_InitTypeDef	EXTI_Structure;
 	NVIC_InitTypeDef	NVIC_Structure;
 	
 	// Open clock
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB | RCC_APB2Periph_AFIO, ENABLE);
-	
-	// Configure
-	GPIO_Structure.GPIO_Pin = GPIO_Pin_9;
-	GPIO_Structure.GPIO_Mode = GPIO_Mode_IPU;
-	GPIO_Structure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOB, &GPIO_Structure);
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	
 	// Mapping
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource9);
