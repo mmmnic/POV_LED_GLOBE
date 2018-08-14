@@ -3,7 +3,7 @@
 
 extern uint32_t TimingDelay;
 extern uint32_t	TimingPos;
-extern uint8_t	TimePerAngle;
+extern uint32_t	TimePerAngle;
 
 
 void InputData(uint8_t Bit);

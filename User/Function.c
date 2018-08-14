@@ -116,7 +116,6 @@ void DisplayLine(uint8_t U5, uint8_t U4, uint8_t U3, uint8_t U2, uint8_t U1)
 	DisplayOneIC(U2);
 	DisplayOneIC(U1);
 	SendData();
-	DelayUs(TimePerAngle);
 }
 
 /**
@@ -130,18 +129,18 @@ void DisplayChar(char c)
 	
 	if (c=='A')
 	{
-		uint8_t A[5][10] =
+		uint8_t A[5][5]=
 		{
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
-			{0b01111111,0b10010000,0b10010000,0b10010000,0b01111111},
+			{0b11111111,0b10010000,0b10010000,0b10010000,0b11111111},
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
 		};
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(A[0][i],A[1][i],A[2][i],A[3][i],A[4][i]);
-			DelayUs(TimePerAngle);
+			DelayUs(TimePerAngle*3);
 		}
 	}
 	
@@ -158,7 +157,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(B[0][i],B[1][i],B[2][i],B[3][i],B[4][i]);
-			DelayUs(TimePerAngle);
+			DelayUs(TimePerAngle*3);
 		}
 	}
 	
@@ -175,7 +174,7 @@ void DisplayChar(char c)
 		for (i=0; i<5; i++)
 		{
 			DisplayLine(C[0][i],C[1][i],C[2][i],C[3][i],C[4][i]);
-			DelayUs(TimePerAngle);
+			DelayUs(TimePerAngle*3);
 		}
 	}
 	
@@ -570,6 +569,7 @@ void DisplayChar(char c)
 			DelayUs(TimePerAngle);
 		}
 	}
+	DisplayLine(0,0,0,0,0);
 }
 
 /**
@@ -585,7 +585,7 @@ void DisplayWord(char *s)
 		DisplayChar(s[i]);
 		i++;
 	}
-	ClearData();
+	DisplayLine(0,0,0,0,0);
 }
 
 /**
@@ -606,7 +606,7 @@ void DelayUs(uint32_t TimeDelay)
   */
 uint8_t StartPos(uint16_t Pos)
 { 	
-	if ((int) (TimingPos) >= (int) (Pos*TimePerAngle + TimePerAngle-5) && (int) (TimingPos) <= (int) (Pos*TimePerAngle + TimePerAngle*5))
+	if ((int) (TimingPos) >= (int) (Pos*TimePerAngle - TimePerAngle*2) && (int) (TimingPos) <= (int) (Pos*TimePerAngle + TimePerAngle*2))
 	{
 			return 1;
 	}

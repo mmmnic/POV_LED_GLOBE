@@ -60,7 +60,7 @@ void Init_Timer(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	
 	// Configure TIM2
-	TIM_TimeBaseStructure.TIM_Prescaler = 1;
+	TIM_TimeBaseStructure.TIM_Prescaler = 19;
 	TIM_TimeBaseStructure.TIM_Period = 35;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
@@ -69,30 +69,12 @@ void Init_Timer(void)
 	
 	// Configure Interrupt for TIM2
 	NVIC_Structure.NVIC_IRQChannel = TIM2_IRQn;
-	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);
 	// Enable TIM2
 	TIM_Cmd(TIM2, ENABLE);
-	
-	// Configure TIM3
-//	TIM_TimeBaseStructure.TIM_Prescaler = 1;
-//	TIM_TimeBaseStructure.TIM_Period = 35;
-//	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-//	TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
-//	TIM_ClearFlag(TIM3, TIM_FLAG_Update);
-//	TIM_ITConfig(TIM3, TIM_IT_Update, ENABLE);
-	
-	// Configure Interrupt for TIM3
-//	NVIC_Structure.NVIC_IRQChannel = TIM3_IRQn;
-//	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 3;
-//	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
-//	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
-//	NVIC_Init(&NVIC_Structure);
-	
-	// Enable TIM3
-//	TIM_Cmd(TIM3, ENABLE);
 }
 
 /**

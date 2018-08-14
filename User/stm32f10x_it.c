@@ -126,18 +126,6 @@ void SVC_Handler(void)
 void PendSV_Handler(void)
 {}
 
-/**
-  * @brief  Handler interrupt of Systick
-  * @param  Global para TimingDelay
-  * @retval None
-  */
-void SysTick_Handler(void)
-{
-	if (TimingDelay != 0x00)
-	{
-		TimingDelay--;
-	}
-}
 
 /******************************************************************************/
 /*            STM32F10x Peripherals Interrupt Handlers                        */
@@ -153,23 +141,10 @@ void TIM2_IRQHandler(void)
   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
   {
 		TimingPos++;
+		TimingDelay--;
     TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
   }
 }
-
-/**
-  * @brief  This function handles TIM3 global interrupt request. count amount time to complete previous cycle
-  * @param  None
-  * @retval None
-  */
-//void TIM3_IRQHandler(void)
-//{
-//  if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
-//  {
-//		TimePerRound++;
-//    TIM_ClearITPendingBit(TIM3, TIM_FLAG_Update);
-//  }
-//}
 
 /**
   * @brief  This function handles line9 global interrupt request.
@@ -180,7 +155,7 @@ void EXTI9_5_IRQHandler(void)
 {
 	if (EXTI_GetITStatus(EXTI_Line9) != RESET)
 	{
-		TimePerAngle = TimingPos/358;
+		TimePerAngle = TimingPos/360;
 		TimingPos = 0;
 		EXTI_ClearITPendingBit(EXTI_Line9);
 	}
