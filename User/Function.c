@@ -116,6 +116,7 @@ void DisplayLine(uint8_t U5, uint8_t U4, uint8_t U3, uint8_t U2, uint8_t U1)
 	DisplayOneIC(U2);
 	DisplayOneIC(U1);
 	SendData();
+	DelayUs(TimePerAngle);
 }
 
 /**
@@ -604,10 +605,11 @@ void DelayUs(uint32_t TimeDelay)
   * @retval 1 (true) or 0 (false)
   */
 uint8_t StartPos(uint16_t Pos)
-{
-	uint16_t StandardError = TimePerAngle*2;
-	if (TimingPos >= Pos*TimePerAngle-StandardError && TimingPos <= Pos*TimePerAngle+StandardError)
-		return 1;
+{ 	
+	if ((int) (TimingPos) >= (int) (Pos*TimePerAngle + TimePerAngle-5) && (int) (TimingPos) <= (int) (Pos*TimePerAngle + TimePerAngle*5))
+	{
+			return 1;
+	}
 	else
 		return 0;
 }

@@ -162,14 +162,14 @@ void TIM2_IRQHandler(void)
   * @param  None
   * @retval None
   */
-void TIM3_IRQHandler(void)
-{
-  if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
-  {
-		TimePerRound++;
-    TIM_ClearITPendingBit(TIM3, TIM_FLAG_Update);
-  }
-}
+//void TIM3_IRQHandler(void)
+//{
+//  if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
+//  {
+//		TimePerRound++;
+//    TIM_ClearITPendingBit(TIM3, TIM_FLAG_Update);
+//  }
+//}
 
 /**
   * @brief  This function handles line9 global interrupt request.
@@ -180,17 +180,8 @@ void EXTI9_5_IRQHandler(void)
 {
 	if (EXTI_GetITStatus(EXTI_Line9) != RESET)
 	{
-		if (!(GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9)))
-		{
-			TIM_Cmd(TIM3, DISABLE);
-			TimePerAngle=TimePerRound/358;
-			TimePerRound = 0;
-			TimingPos=0;
-		}
-		else if (GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_9))
-		{	
-			TIM_Cmd(TIM3, ENABLE);
-		}
+		TimePerAngle = TimingPos/358;
+		TimingPos = 0;
 		EXTI_ClearITPendingBit(EXTI_Line9);
 	}
 }
