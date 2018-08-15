@@ -4,6 +4,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 
+
 /**
   * @brief  InputData for IC
   * @param  Input Binary 1 or 0, 1 is set to High, 0 is set to low
@@ -54,12 +55,12 @@ void SendData(void)
   */
 void ClearData(void)
 {
-	// Make sure Pin A4 is High to set LOW
-	GPIO_SetBits(GPIOA, GPIO_Pin_4);
-	// RESET Pin A4 to clear Data
+	// Set Pin A4 is Low to clear Data
 	GPIO_ResetBits(GPIOA, GPIO_Pin_4);
 	// Send Data
 	SendData();
+	// Set Pin A4 back to high
+	GPIO_SetBits(GPIOA, GPIO_Pin_4);
 }	
 
 /**
@@ -570,7 +571,7 @@ void DisplayChar(char c)
 		}
 	}
 
-	DisplayLine(0,0,0,0,0);
+	ClearData();
 	DelayUs(TimePerAngle*4);
 }
 
