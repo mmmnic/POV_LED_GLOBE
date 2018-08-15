@@ -61,7 +61,7 @@ void Init_Timer(void)
 	
 	// Configure TIM2
 	TIM_TimeBaseStructure.TIM_Prescaler = 19;
-	TIM_TimeBaseStructure.TIM_Period = 35;
+	TIM_TimeBaseStructure.TIM_Period = 71;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
 	TIM_ClearFlag(TIM2, TIM_FLAG_Update);

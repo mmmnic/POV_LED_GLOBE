@@ -8,7 +8,8 @@ int main(void)
 
 	while (1)
 	{
-		DisplayWord("HELLO");
+		if (StartPos(310))
+			DisplayWord("HELLO");
 	}
 	
 }
