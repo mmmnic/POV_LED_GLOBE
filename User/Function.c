@@ -28,7 +28,7 @@ uint8_t W[5]={0b11111110,0b00000100,0b00011000,0b00000100,0b11111110};
 uint8_t X[5]={0b11000110,0b00101000,0b00010000,0b00101000,0b11000110};
 uint8_t Y[5]={0b11000000,0b00100000,0b00011110,0b00100000,0b11000000};
 uint8_t Z[5]={0b10000110,0b10001010,0b10010010,0b10100010,0b11000010};
-
+uint8_t Null[5]={0,0,0,0,0};
 
 /**
   * @brief  InputData for IC
@@ -654,4 +654,39 @@ uint8_t StartPos(uint16_t Pos)
 	}
 	else
 		return 0;
+}
+
+void DisplayGlobe(char *s1, char *s2, char *s3, char *s4, char *s5)
+{
+	uint8_t i, max=0;
+	
+	for (i=0; i<max; i++)
+	{
+		if (s1=='\0')
+		{
+			DisplayOneIC(0);
+		}
+		else
+		{
+				DisplayOneIC(DisplayChar(S[i],i);
+		}
+		if (s2=='\0')
+		{
+			DisplayOneIC(0);
+		}
+		if (s3=='\0')
+		{
+			DisplayOneIC(0);
+		}
+		if (s4=='\0')
+		{
+			DisplayOneIC(0);
+		}
+		if (s5=='\0')
+		{
+			DisplayOneIC(0);
+		}
+	}
+	
+			
 }
