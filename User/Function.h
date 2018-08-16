@@ -1,5 +1,6 @@
 // Include
 #include <Init.h>
+#include <string.h>
 
 extern uint32_t TimingDelay;
 extern uint32_t	TimingPos;

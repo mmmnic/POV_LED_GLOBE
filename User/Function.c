@@ -2,6 +2,32 @@
 #include <Function.h>
 
 /* Private variables ---------------------------------------------------------*/
+uint8_t A[5]={0b01111110,0b10010000,0b10010000,0b10010000,0b01111110};
+uint8_t B[5]={0b11111110,0b10010010,0b10010010,0b10010010,0b01101100};
+uint8_t C[5]={0b01111100,0b10000010,0b10000010,0b10000010,0b01000100};
+uint8_t D[5]={0b11111110,0b10000010,0b10000010,0b10000010,0b01111100};
+uint8_t E[5]={0b11111110,0b10010010,0b10010010,0b10010010,0b10000010};
+uint8_t F[5]={0b11111110,0b10010000,0b10010000,0b10010000,0b10000000};
+uint8_t G[5]={0b01111100,0b10000010,0b10010010,0b10010010,0b10011100};
+uint8_t H[5]={0b11111110,0b00010000,0b00010000,0b00010000,0b11111110};
+uint8_t I[5]={0b10000010,0b10000010,0b11111110,0b10000010,0b10000010};
+uint8_t J[5]={0b00001100,0b00000010,0b00000010,0b11111100,0b00000000};
+uint8_t K[5]={0b11111110,0b00010000,0b00101000,0b01000100,0b10000010};
+uint8_t L[5]={0b11111110,0b00000010,0b00000010,0b00000010,0b00000010};
+uint8_t M[5]={0b11111110,0b01000000,0b00110000,0b01000000,0b11111110};
+uint8_t N[5]={0b11111110,0b00100000,0b00010000,0b00001000,0b11111110};
+uint8_t O[5]={0b01111100,0b10000010,0b10000010,0b10000010,0b01111100};
+uint8_t P[5]={0b11111110,0b10010000,0b10010000,0b10010000,0b01100000};
+uint8_t Q[5]={0b01111100,0b10000010,0b10001010,0b10000110,0b01111110};
+uint8_t R[5]={0b11111110,0b10010000,0b10011000,0b10010100,0b01100010};
+uint8_t S[5]={0b01110010,0b10010010,0b10010010,0b10010010,0b10001100};
+uint8_t T[5]={0b10000000,0b10000000,0b11111110,0b10000000,0b10000000};
+uint8_t U[5]={0b11111100,0b00000010,0b00000010,0b00000010,0b11111100};
+uint8_t V[5]={0b11111000,0b00000100,0b00000010,0b00000100,0b11111000};
+uint8_t W[5]={0b11111110,0b00000100,0b00011000,0b00000100,0b11111110};
+uint8_t X[5]={0b11000110,0b00101000,0b00010000,0b00101000,0b11000110};
+uint8_t Y[5]={0b11000000,0b00100000,0b00011110,0b00100000,0b11000000};
+uint8_t Z[5]={0b10000110,0b10001010,0b10010010,0b10100010,0b11000010};
 
 
 /**
@@ -54,12 +80,12 @@ void SendData(void)
   */
 void ClearData(void)
 {
-	// Make sure Pin A4 is High to set LOW
-	GPIO_SetBits(GPIOA, GPIO_Pin_4);
-	// RESET Pin A4 to clear Data
+	// Set Pin A4 to low to clear Data
 	GPIO_ResetBits(GPIOA, GPIO_Pin_4);
 	// Send Data
 	SendData();
+	// Set Pin A4 back to high
+	GPIO_SetBits(GPIOA, GPIO_Pin_4);
 }	
 
 /**
@@ -122,10 +148,27 @@ void DisplayLine(uint8_t U5, uint8_t U4, uint8_t U3, uint8_t U2, uint8_t U1)
   * @brief  Combine with delay to display all LED into a char
   * @param  input a char
   * @retval None
-  */
+	*/
 void DisplayChar(char c)
 {
 	uint8_t i;
+	
+	if (c==' ')
+	{
+		uint8_t Null[5][5]=
+		{
+			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
+			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
+			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
+			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
+			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
+		};
+		for (i=0; i<5; i++)
+		{
+			DisplayLine(Null[0][i],Null[1][i],Null[2][i],Null[3][i],Null[4][i]);
+			DelayUs(TimePerAngle*3);
+		}
+	}
 	
 	if (c=='A')
 	{
@@ -133,7 +176,7 @@ void DisplayChar(char c)
 		{
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
-			{0b01111111,0b10010000,0b10010000,0b10010000,0b01111111},
+			{0b01111110,0b10010000,0b10010000,0b10010000,0b01111110},
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
 			{0b00000000,0b00000000,0b00000000,0b00000000,0b00000000},
 		};
@@ -570,9 +613,10 @@ void DisplayChar(char c)
 		}
 	}
 
-	DisplayLine(0,0,0,0,0);
+	ClearData();
 	DelayUs(TimePerAngle*4);
 }
+
 
 /**
   * @brief  Use the DisplayChar function to display into a word
@@ -581,12 +625,9 @@ void DisplayChar(char c)
   */
 void DisplayWord(char *s)
 {
-	uint8_t i=0;
-	while (i<=sizeof(s))
-	{
+	uint8_t i;
+	for (i=0; i<strlen(s); i++)
 		DisplayChar(s[i]);
-		i++;
-	}
 }
 
 /**
@@ -607,7 +648,7 @@ void DelayUs(uint32_t TimeDelay)
   */
 uint8_t StartPos(uint16_t Pos)
 { 	
-	if ((int) (TimingPos) >= (int) (Pos*TimePerAngle - TimePerAngle*2) && (int) (TimingPos) <= (int) (Pos*TimePerAngle + TimePerAngle*2))
+	if (TimingPos >= Pos*TimePerAngle && TimingPos <= Pos*TimePerAngle)
 	{
 			return 1;
 	}

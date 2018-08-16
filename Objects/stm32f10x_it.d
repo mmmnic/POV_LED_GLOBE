@@ -31,3 +31,4 @@
 .\objects\stm32f10x_it.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\stm32f10x_it.o: User\Function.h
 .\objects\stm32f10x_it.o: .\User\Init.h
+.\objects\stm32f10x_it.o: C:\Shit Things\Keil\ARM\ARMCC\Bin\..\include\string.h
