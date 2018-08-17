@@ -6,13 +6,9 @@ int main(void)
 	Init_Timer();
 	Init_Interrupt();
 
-	//uint8_t i=0;
+	
 	while (1)
 	{
-		if (StartPos(300))
-		{
-			DisplayWord("HELLO UIT");
-		}
+		DisplayWordGlobe(330, "", "CHAO", "CAC", "BAN", "");
 	}
-
 }
