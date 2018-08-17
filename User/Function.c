@@ -66,7 +66,7 @@ void ClearData(void)
   * @param  Global para TimingDelay, private para TimeDelay for input delay time
   * @retval None
   */
-void DelayUs(uint32_t TimeDelay)
+void Delay(uint32_t TimeDelay)
 {
 	TimingDelay = TimeDelay;
 	while(TimingDelay);
@@ -367,7 +367,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 				
 				//Display
 				DisplayLine(Data[0], Data[1], Data[2], Data[3], Data[4]);
-				DelayUs(TimePerAngle*3);
+				Delay(TimePerAngle*3);
 			}
 		}
 	}		

@@ -56,7 +56,6 @@ Section Cross References
     .\objects\init.o(i.Init_Interrupt) refers to .\objects\stm32f10x_exti.o(i.EXTI_ClearITPendingBit) for EXTI_ClearITPendingBit
     .\objects\init.o(i.Init_Interrupt) refers to .\objects\stm32f10x_exti.o(i.EXTI_Init) for EXTI_Init
     .\objects\init.o(i.Init_Interrupt) refers to .\objects\misc.o(i.NVIC_Init) for NVIC_Init
-    .\objects\init.o(i.Init_SysTick) refers to .\objects\system_stm32f10x.o(.data) for SystemCoreClock
     .\objects\init.o(i.Init_Timer) refers to .\objects\stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd) for RCC_APB1PeriphClockCmd
     .\objects\init.o(i.Init_Timer) refers to .\objects\stm32f10x_tim.o(i.TIM_TimeBaseInit) for TIM_TimeBaseInit
     .\objects\init.o(i.Init_Timer) refers to .\objects\stm32f10x_tim.o(i.TIM_ClearFlag) for TIM_ClearFlag
@@ -72,7 +71,7 @@ Section Cross References
     .\objects\function.o(i.ClearData) refers to .\objects\stm32f10x_gpio.o(i.GPIO_ResetBits) for GPIO_ResetBits
     .\objects\function.o(i.ClearData) refers to .\objects\function.o(i.SendData) for SendData
     .\objects\function.o(i.ClearData) refers to .\objects\stm32f10x_gpio.o(i.GPIO_SetBits) for GPIO_SetBits
-    .\objects\function.o(i.DelayUs) refers to .\objects\stm32f10x_it.o(.data) for TimingDelay
+    .\objects\function.o(i.Delay) refers to .\objects\stm32f10x_it.o(.data) for TimingDelay
     .\objects\function.o(i.DisplayLine) refers to .\objects\function.o(i.DisplayOneIC) for DisplayOneIC
     .\objects\function.o(i.DisplayLine) refers to .\objects\function.o(i.SendData) for SendData
     .\objects\function.o(i.DisplayOneIC) refers to .\objects\function.o(i.InputData) for InputData
@@ -82,7 +81,7 @@ Section Cross References
     .\objects\function.o(i.DisplayWordGlobe) refers to C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(strlen.o)(.text) for strlen
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.CharCVT) for CharCVT
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.DisplayLine) for DisplayLine
-    .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.DelayUs) for DelayUs
+    .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.Delay) for Delay
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\stm32f10x_it.o(.data) for TimePerAngle
     .\objects\function.o(i.InputData) refers to .\objects\stm32f10x_gpio.o(i.GPIO_SetBits) for GPIO_SetBits
     .\objects\function.o(i.InputData) refers to .\objects\stm32f10x_gpio.o(i.GPIO_ResetBits) for GPIO_ResetBits
@@ -304,10 +303,8 @@ Removing Unused input sections from the image.
     Removing .\objects\stm32f10x_tim.o(i.TIM_TimeBaseStructInit), (18 bytes).
     Removing .\objects\stm32f10x_tim.o(i.TIM_UpdateDisableConfig), (24 bytes).
     Removing .\objects\stm32f10x_tim.o(i.TIM_UpdateRequestConfig), (24 bytes).
-    Removing .\objects\init.o(i.Init_SysTick), (100 bytes).
-    Removing .\objects\function.o(.data), (135 bytes).
 
-190 unused section(s) (total 7631 bytes) removed from the image.
+188 unused section(s) (total 7396 bytes) removed from the image.
 
 ==============================================================================
 
@@ -367,7 +364,7 @@ Image Symbol Table
     i.CharCVT                                0x080001a0   Section        0  .\objects\function.o(i.CharCVT)
     i.ClearData                              0x0800044c   Section        0  .\objects\function.o(i.ClearData)
     i.DebugMon_Handler                       0x08000468   Section        0  .\objects\stm32f10x_it.o(i.DebugMon_Handler)
-    i.DelayUs                                0x0800046c   Section        0  .\objects\function.o(i.DelayUs)
+    i.Delay                                  0x0800046c   Section        0  .\objects\function.o(i.Delay)
     i.DisplayLine                            0x08000480   Section        0  .\objects\function.o(i.DisplayLine)
     i.DisplayOneIC                           0x080004b6   Section        0  .\objects\function.o(i.DisplayOneIC)
     i.DisplayWordGlobe                       0x0800057c   Section        0  .\objects\function.o(i.DisplayWordGlobe)
@@ -504,7 +501,7 @@ Image Symbol Table
     CharCVT                                  0x080001a1   Thumb Code   476  .\objects\function.o(i.CharCVT)
     ClearData                                0x0800044d   Thumb Code    24  .\objects\function.o(i.ClearData)
     DebugMon_Handler                         0x08000469   Thumb Code     2  .\objects\stm32f10x_it.o(i.DebugMon_Handler)
-    DelayUs                                  0x0800046d   Thumb Code    16  .\objects\function.o(i.DelayUs)
+    Delay                                    0x0800046d   Thumb Code    16  .\objects\function.o(i.Delay)
     DisplayLine                              0x08000481   Thumb Code    54  .\objects\function.o(i.DisplayLine)
     DisplayOneIC                             0x080004b7   Thumb Code   198  .\objects\function.o(i.DisplayOneIC)
     DisplayWordGlobe                         0x0800057d   Thumb Code   370  .\objects\function.o(i.DisplayWordGlobe)
@@ -567,29 +564,29 @@ Memory Map of the image
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x08000000   0x00000130   Data   RO            3    RESET               .\objects\startup_stm32f10x_hd.o
-    0x08000130   0x08000130   0x00000000   Code   RO         1594  * .ARM.Collect$$$$00000000  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry.o)
-    0x08000130   0x08000130   0x00000004   Code   RO         1599    .ARM.Collect$$$$00000001  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry2.o)
-    0x08000134   0x08000134   0x00000004   Code   RO         1602    .ARM.Collect$$$$00000004  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry5.o)
-    0x08000138   0x08000138   0x00000000   Code   RO         1604    .ARM.Collect$$$$00000008  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry7b.o)
-    0x08000138   0x08000138   0x00000000   Code   RO         1606    .ARM.Collect$$$$0000000A  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry8b.o)
-    0x08000138   0x08000138   0x00000008   Code   RO         1607    .ARM.Collect$$$$0000000B  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry9a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO         1609    .ARM.Collect$$$$0000000D  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry10a.o)
-    0x08000140   0x08000140   0x00000000   Code   RO         1611    .ARM.Collect$$$$0000000F  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry11a.o)
-    0x08000140   0x08000140   0x00000004   Code   RO         1600    .ARM.Collect$$$$00002712  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry2.o)
+    0x08000130   0x08000130   0x00000000   Code   RO         1581  * .ARM.Collect$$$$00000000  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry.o)
+    0x08000130   0x08000130   0x00000004   Code   RO         1586    .ARM.Collect$$$$00000001  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry2.o)
+    0x08000134   0x08000134   0x00000004   Code   RO         1589    .ARM.Collect$$$$00000004  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry5.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         1591    .ARM.Collect$$$$00000008  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry7b.o)
+    0x08000138   0x08000138   0x00000000   Code   RO         1593    .ARM.Collect$$$$0000000A  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry8b.o)
+    0x08000138   0x08000138   0x00000008   Code   RO         1594    .ARM.Collect$$$$0000000B  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry9a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         1596    .ARM.Collect$$$$0000000D  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry10a.o)
+    0x08000140   0x08000140   0x00000000   Code   RO         1598    .ARM.Collect$$$$0000000F  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry11a.o)
+    0x08000140   0x08000140   0x00000004   Code   RO         1587    .ARM.Collect$$$$00002712  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry2.o)
     0x08000144   0x08000144   0x00000024   Code   RO            4  * .text               .\objects\startup_stm32f10x_hd.o
-    0x08000168   0x08000168   0x0000000e   Code   RO         1597    .text               C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(strlen.o)
+    0x08000168   0x08000168   0x0000000e   Code   RO         1584    .text               C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(strlen.o)
     0x08000176   0x08000176   0x00000002   PAD
-    0x08000178   0x08000178   0x00000024   Code   RO         1613    .text               C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(init.o)
-    0x0800019c   0x0800019c   0x00000004   Code   RO         1431    i.BusFault_Handler  .\objects\stm32f10x_it.o
-    0x080001a0   0x080001a0   0x000002ac   Code   RO         1509    i.CharCVT           .\objects\function.o
-    0x0800044c   0x0800044c   0x0000001c   Code   RO         1510    i.ClearData         .\objects\function.o
-    0x08000468   0x08000468   0x00000002   Code   RO         1432    i.DebugMon_Handler  .\objects\stm32f10x_it.o
+    0x08000178   0x08000178   0x00000024   Code   RO         1600    .text               C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(init.o)
+    0x0800019c   0x0800019c   0x00000004   Code   RO         1421    i.BusFault_Handler  .\objects\stm32f10x_it.o
+    0x080001a0   0x080001a0   0x000002ac   Code   RO         1499    i.CharCVT           .\objects\function.o
+    0x0800044c   0x0800044c   0x0000001c   Code   RO         1500    i.ClearData         .\objects\function.o
+    0x08000468   0x08000468   0x00000002   Code   RO         1422    i.DebugMon_Handler  .\objects\stm32f10x_it.o
     0x0800046a   0x0800046a   0x00000002   PAD
-    0x0800046c   0x0800046c   0x00000014   Code   RO         1511    i.DelayUs           .\objects\function.o
-    0x08000480   0x08000480   0x00000036   Code   RO         1512    i.DisplayLine       .\objects\function.o
-    0x080004b6   0x080004b6   0x000000c6   Code   RO         1513    i.DisplayOneIC      .\objects\function.o
-    0x0800057c   0x0800057c   0x00000178   Code   RO         1514    i.DisplayWordGlobe  .\objects\function.o
-    0x080006f4   0x080006f4   0x00000034   Code   RO         1433    i.EXTI9_5_IRQHandler  .\objects\stm32f10x_it.o
+    0x0800046c   0x0800046c   0x00000014   Code   RO         1501    i.Delay             .\objects\function.o
+    0x08000480   0x08000480   0x00000036   Code   RO         1502    i.DisplayLine       .\objects\function.o
+    0x080004b6   0x080004b6   0x000000c6   Code   RO         1503    i.DisplayOneIC      .\objects\function.o
+    0x0800057c   0x0800057c   0x00000178   Code   RO         1504    i.DisplayWordGlobe  .\objects\function.o
+    0x080006f4   0x080006f4   0x00000034   Code   RO         1423    i.EXTI9_5_IRQHandler  .\objects\stm32f10x_it.o
     0x08000728   0x08000728   0x0000000c   Code   RO          419    i.EXTI_ClearITPendingBit  .\objects\stm32f10x_exti.o
     0x08000734   0x08000734   0x00000028   Code   RO          423    i.EXTI_GetITStatus  .\objects\stm32f10x_exti.o
     0x0800075c   0x0800075c   0x00000094   Code   RO          424    i.EXTI_Init         .\objects\stm32f10x_exti.o
@@ -597,50 +594,50 @@ Memory Map of the image
     0x08000830   0x08000830   0x00000116   Code   RO          478    i.GPIO_Init         .\objects\stm32f10x_gpio.o
     0x08000946   0x08000946   0x00000004   Code   RO          485    i.GPIO_ResetBits    .\objects\stm32f10x_gpio.o
     0x0800094a   0x0800094a   0x00000004   Code   RO          486    i.GPIO_SetBits      .\objects\stm32f10x_gpio.o
-    0x0800094e   0x0800094e   0x00000004   Code   RO         1434    i.HardFault_Handler  .\objects\stm32f10x_it.o
+    0x0800094e   0x0800094e   0x00000004   Code   RO         1424    i.HardFault_Handler  .\objects\stm32f10x_it.o
     0x08000952   0x08000952   0x00000002   PAD
     0x08000954   0x08000954   0x00000074   Code   RO         1394    i.Init_GPIO         .\objects\init.o
     0x080009c8   0x080009c8   0x00000058   Code   RO         1395    i.Init_Interrupt    .\objects\init.o
-    0x08000a20   0x08000a20   0x00000066   Code   RO         1397    i.Init_Timer        .\objects\init.o
+    0x08000a20   0x08000a20   0x00000066   Code   RO         1396    i.Init_Timer        .\objects\init.o
     0x08000a86   0x08000a86   0x00000002   PAD
-    0x08000a88   0x08000a88   0x00000020   Code   RO         1515    i.InputData         .\objects\function.o
-    0x08000aa8   0x08000aa8   0x00000004   Code   RO         1435    i.MemManage_Handler  .\objects\stm32f10x_it.o
-    0x08000aac   0x08000aac   0x00000002   Code   RO         1436    i.NMI_Handler       .\objects\stm32f10x_it.o
+    0x08000a88   0x08000a88   0x00000020   Code   RO         1505    i.InputData         .\objects\function.o
+    0x08000aa8   0x08000aa8   0x00000004   Code   RO         1425    i.MemManage_Handler  .\objects\stm32f10x_it.o
+    0x08000aac   0x08000aac   0x00000002   Code   RO         1426    i.NMI_Handler       .\objects\stm32f10x_it.o
     0x08000aae   0x08000aae   0x00000002   PAD
     0x08000ab0   0x08000ab0   0x00000070   Code   RO          137    i.NVIC_Init         .\objects\misc.o
-    0x08000b20   0x08000b20   0x00000002   Code   RO         1437    i.PendSV_Handler    .\objects\stm32f10x_it.o
+    0x08000b20   0x08000b20   0x00000002   Code   RO         1427    i.PendSV_Handler    .\objects\stm32f10x_it.o
     0x08000b22   0x08000b22   0x00000002   PAD
     0x08000b24   0x08000b24   0x00000020   Code   RO          648    i.RCC_APB1PeriphClockCmd  .\objects\stm32f10x_rcc.o
     0x08000b44   0x08000b44   0x00000020   Code   RO          650    i.RCC_APB2PeriphClockCmd  .\objects\stm32f10x_rcc.o
-    0x08000b64   0x08000b64   0x00000002   Code   RO         1438    i.SVC_Handler       .\objects\stm32f10x_it.o
+    0x08000b64   0x08000b64   0x00000002   Code   RO         1428    i.SVC_Handler       .\objects\stm32f10x_it.o
     0x08000b66   0x08000b66   0x00000002   PAD
-    0x08000b68   0x08000b68   0x00000018   Code   RO         1516    i.SendData          .\objects\function.o
+    0x08000b68   0x08000b68   0x00000018   Code   RO         1506    i.SendData          .\objects\function.o
     0x08000b80   0x08000b80   0x00000008   Code   RO           24    i.SetSysClock       .\objects\system_stm32f10x.o
     0x08000b88   0x08000b88   0x000000e0   Code   RO           25    i.SetSysClockTo72   .\objects\system_stm32f10x.o
-    0x08000c68   0x08000c68   0x00000018   Code   RO         1517    i.ShiftLED          .\objects\function.o
-    0x08000c80   0x08000c80   0x00000030   Code   RO         1518    i.StartPos          .\objects\function.o
+    0x08000c68   0x08000c68   0x00000018   Code   RO         1507    i.ShiftLED          .\objects\function.o
+    0x08000c80   0x08000c80   0x00000030   Code   RO         1508    i.StartPos          .\objects\function.o
     0x08000cb0   0x08000cb0   0x00000060   Code   RO           27    i.SystemInit        .\objects\system_stm32f10x.o
-    0x08000d10   0x08000d10   0x00000034   Code   RO         1439    i.TIM2_IRQHandler   .\objects\stm32f10x_it.o
+    0x08000d10   0x08000d10   0x00000034   Code   RO         1429    i.TIM2_IRQHandler   .\objects\stm32f10x_it.o
     0x08000d44   0x08000d44   0x00000006   Code   RO          856    i.TIM_ClearFlag     .\objects\stm32f10x_tim.o
     0x08000d4a   0x08000d4a   0x00000006   Code   RO          857    i.TIM_ClearITPendingBit  .\objects\stm32f10x_tim.o
     0x08000d50   0x08000d50   0x00000018   Code   RO          862    i.TIM_Cmd           .\objects\stm32f10x_tim.o
     0x08000d68   0x08000d68   0x00000022   Code   RO          883    i.TIM_GetITStatus   .\objects\stm32f10x_tim.o
     0x08000d8a   0x08000d8a   0x00000012   Code   RO          887    i.TIM_ITConfig      .\objects\stm32f10x_tim.o
     0x08000d9c   0x08000d9c   0x000000a4   Code   RO          933    i.TIM_TimeBaseInit  .\objects\stm32f10x_tim.o
-    0x08000e40   0x08000e40   0x00000004   Code   RO         1440    i.UsageFault_Handler  .\objects\stm32f10x_it.o
-    0x08000e44   0x08000e44   0x0000000e   Code   RO         1617    i.__scatterload_copy  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)
-    0x08000e52   0x08000e52   0x00000002   Code   RO         1618    i.__scatterload_null  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)
-    0x08000e54   0x08000e54   0x0000000e   Code   RO         1619    i.__scatterload_zeroinit  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)
+    0x08000e40   0x08000e40   0x00000004   Code   RO         1430    i.UsageFault_Handler  .\objects\stm32f10x_it.o
+    0x08000e44   0x08000e44   0x0000000e   Code   RO         1604    i.__scatterload_copy  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)
+    0x08000e52   0x08000e52   0x00000002   Code   RO         1605    i.__scatterload_null  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)
+    0x08000e54   0x08000e54   0x0000000e   Code   RO         1606    i.__scatterload_zeroinit  C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)
     0x08000e62   0x08000e62   0x00000002   PAD
-    0x08000e64   0x08000e64   0x0000003c   Code   RO         1582    i.main              .\objects\main.o
-    0x08000ea0   0x08000ea0   0x00000020   Data   RO         1615    Region$$Table       anon$$obj.o
+    0x08000e64   0x08000e64   0x0000003c   Code   RO         1569    i.main              .\objects\main.o
+    0x08000ea0   0x08000ea0   0x00000020   Data   RO         1602    Region$$Table       anon$$obj.o
 
 
     Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x08000ec0, Size: 0x00000010, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08000ec0   0x00000010   Data   RW         1441    .data               .\objects\stm32f10x_it.o
+    0x20000000   0x08000ec0   0x00000010   Data   RW         1431    .data               .\objects\stm32f10x_it.o
 
 
     Execution Region ER_ZI (Exec base: 0x20000010, Load base: 0x08000ed0, Size: 0x00000400, Max: 0xffffffff, ABSOLUTE)
@@ -658,7 +655,7 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
          0          0          0          0          0       4524   .\objects\core_cm3.o
-      1488        266          0          0          0       6769   .\objects\function.o
+      1488        266          0          0          0       6767   .\objects\function.o
        306         10          0          0          0       1494   .\objects\init.o
         60         20          0          0          0        431   .\objects\main.o
        112         12          0          0          0     206960   .\objects\misc.o
@@ -671,7 +668,7 @@ Image component sizes
        328         28          0          0          0      31113   .\objects\system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      3336        438        336         16       1024     268374   Object Totals
+      3336        438        336         16       1024     268372   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          0          0          0          0   (incl. Padding)
 
@@ -711,8 +708,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3440        454        336         16       1024     266634   Grand Totals
-      3440        454        336         16       1024     266634   ELF Image Totals
+      3440        454        336         16       1024     266632   Grand Totals
+      3440        454        336         16       1024     266632   ELF Image Totals
       3440        454        336         16          0          0   ROM Totals
 
 ==============================================================================

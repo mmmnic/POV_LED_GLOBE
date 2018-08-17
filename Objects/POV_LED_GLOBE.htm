@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\POV_LED_GLOBE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\POV_LED_GLOBE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Aug 17 15:45:39 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Aug 17 16:21:28 2018
 <BR><P>
 <H3>Maximum Stack Usage =        128 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -340,7 +340,7 @@ Global Symbols
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[59]"></a>DelayUs</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, .\objects\function.o(i.DelayUs))
+<P><STRONG><a name="[59]"></a>Delay</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 </UL>
 
@@ -365,12 +365,12 @@ Global Symbols
 <P><STRONG><a name="[55]"></a>DisplayWordGlobe</STRONG> (Thumb, 370 bytes, Stack size 72 bytes, .\objects\function.o(i.DisplayWordGlobe))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC &rArr; ShiftLED
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DelayUs
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 <LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CharCVT
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>

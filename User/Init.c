@@ -40,16 +40,6 @@ void Init_GPIO(void)
   * @param  Divide for divde system code clock
   * @retval None
   */
-void Init_SysTick(void)
-{
-	SysTick_Config(SystemCoreClock/1000000);
-}
-
-/**
-  * @brief  Config Systick
-  * @param  Divide for divde system code clock
-  * @retval None
-  */
 void Init_Timer(void)
 {
 	TIM_TimeBaseInitTypeDef 	TIM_TimeBaseStructure;
