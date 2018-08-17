@@ -81,7 +81,7 @@ uint8_t StartPos(uint16_t Pos)
 { 	
 	if (TimingPos >= Pos*TimePerAngle && TimingPos <= Pos*TimePerAngle)
 	{
-			return 1;
+		return 1;
 	}
 	else
 		return 0;
@@ -301,7 +301,6 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 {
 	if (StartPos(Pos))
 	{
-		ClearData();
 		// Find longest word
 		uint8_t i, max,Data[5], ArrStrLen[5] = {strlen(s0), strlen(s1), strlen(s2), strlen(s3), strlen(s4)};
 		max = ArrStrLen[0];
@@ -369,6 +368,8 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 				DisplayLine(Data[0], Data[1], Data[2], Data[3], Data[4]);
 				Delay(TimePerAngle*3);
 			}
+			ClearData();
+			Delay(TimePerAngle*3);
 		}
 	}		
 }
