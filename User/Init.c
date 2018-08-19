@@ -50,7 +50,7 @@ void Init_Timer(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	
 	// Configure TIM2
-	TIM_TimeBaseStructure.TIM_Prescaler = 19;
+	TIM_TimeBaseStructure.TIM_Prescaler = 9;
 	TIM_TimeBaseStructure.TIM_Period = 71;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
@@ -59,7 +59,7 @@ void Init_Timer(void)
 	
 	// Configure Interrupt for TIM2
 	NVIC_Structure.NVIC_IRQChannel = TIM2_IRQn;
-	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);
@@ -93,7 +93,7 @@ void Init_Interrupt(void)
 	
 	//NVIC Config
 	NVIC_Structure.NVIC_IRQChannel = EXTI9_5_IRQn;
-	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 1;
+	NVIC_Structure.NVIC_IRQChannelPreemptionPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelSubPriority = 0;
 	NVIC_Structure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_Structure);

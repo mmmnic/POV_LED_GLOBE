@@ -9,6 +9,21 @@ int main(void)
 	
 	while (1)
 	{
-		DisplayWordGlobe(330, "", "CHAO", "CAC", "BAN", "");
+		Timing=200000;
+		while (Timing<=200000)
+		{
+			DisplayWordGlobe(315,"","HELLO", " UIT ", "","");
+		}
+		Timing=200000;
+		while (Timing<=200000)
+		{
+			DisplayWordGlobe(270,"","   HELLO   ", "  COMPUTER  ", "ENGINEERING","");
+		}
+//		TimingDelay=3000000;
+//		while (TimingDelay)
+//			DisplayWordGlobe(315,"","HELLO", " CEEC", "","");
+//		TimingDelay=3000000;
+//		while (TimingDelay)
+//			DisplayWordGlobe(315,"","HELLO", "MYSELF", "","");
 	}
 }

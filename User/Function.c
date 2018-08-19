@@ -78,8 +78,10 @@ void Delay(uint32_t TimeDelay)
   * @retval 1 (true) or 0 (false)
   */
 uint8_t StartPos(uint16_t Pos)
-{ 	
-	if (TimingPos >= Pos*TimePerAngle && TimingPos <= Pos*TimePerAngle)
+{ 
+	if (Pos>355)
+		Pos=355;
+	if (TimingPos >= Pos*TimePerAngle && TimingPos <= (Pos*TimePerAngle))
 	{
 		return 1;
 	}
@@ -319,7 +321,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 			for (j=0; j<5; j++)
 			{
 				// First row
-				if (s0[0]=='\0' || ArrStrLen[0] <max)
+				if (ArrStrLen[0] < i)
 				{
 					Data[0]=0;
 				}
@@ -328,7 +330,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 					Data[0]=CharCVT(s0[i],j);
 				}
 				// Second row
-				if (s1[0]=='\0' || ArrStrLen[1] <max)
+				if (ArrStrLen[1] < i)
 				{
 					Data[1]=0;
 				}
@@ -337,7 +339,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 					Data[1]=CharCVT(s1[i],j);
 				}
 				// Third row
-				if (s2[0]=='\0' || ArrStrLen[2] <max)
+				if (ArrStrLen[2] < i)
 				{
 					Data[2]=0;
 				}
@@ -346,7 +348,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 					Data[2]=CharCVT(s2[i],j);
 				}
 				// Fourth row
-				if (s3[0]=='\0' || ArrStrLen[3] <max)
+				if (ArrStrLen[3] < i)
 				{
 					Data[3]=0;
 				}
@@ -355,7 +357,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 					Data[3]=CharCVT(s3[i],j);
 				}
 				// fifth row
-				if (s4[0]=='\0' || ArrStrLen[4] <max)
+				if (ArrStrLen[4] < i)
 				{
 					Data[4]=0;
 				}
@@ -366,10 +368,137 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 				
 				//Display
 				DisplayLine(Data[0], Data[1], Data[2], Data[3], Data[4]);
-				Delay(TimePerAngle*3);
+				TimingDelay = TimePerAngle*3;
+				while(TimingDelay);
 			}
 			ClearData();
-			Delay(TimePerAngle*3);
+			Delay(TimePerAngle*5);
 		}
 	}		
+}
+
+void DisplayEarth(void)
+{
+	DisplayLine(0,0,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,0,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b01100000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b11100000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b11100000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b11000000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b11000000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b11000000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0b1,0b11000000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,0b11100000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	// 10x1
+	
+	DisplayLine(0,0b11100000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(1,0b11110000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(1,0b11111000,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(1,255,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(1,255,0b10000000,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,255,0b11000000,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,255,0b11000000,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,255,0b11110000,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,255,0b11111000,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
+	DisplayLine(0,255,0b11111100,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	//10x2
+	0
+	DisplayLine(0,255,0b11110100,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	1
+	DisplayLine(0b11001111,0b11100100,0,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	2
+	DisplayLine(0,0b10001111,0b11100110,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	3
+	DisplayLine(0,0b00001111,0b11100010,0,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	4
+	DisplayLine(0,0b00000111,0b11000001,0b00110000,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	5
+	DisplayLine(0,0b00000111,0b11000001,0b11111000,0);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	6
+	DisplayLine(0,0b00111111,0b10000000,0b11111100,0b00111110);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	7
+	DisplayLine(0,0b00111111,0,255,0b11111100);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	8
+	DisplayLine(,,,,);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	9
+	DisplayLine(,,,,);
+	TimingDelay = TimePerAngle*3;
+	while(TimingDelay);
+	
 }
