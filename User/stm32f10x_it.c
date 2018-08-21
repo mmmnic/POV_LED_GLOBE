@@ -131,6 +131,7 @@ void PendSV_Handler(void)
 /*            STM32F10x Peripherals Interrupt Handlers                        */
 /******************************************************************************/
 
+	
 /**
   * @brief  This function handles TIM2 global interrupt request.
   * @param  None
@@ -141,8 +142,8 @@ void TIM2_IRQHandler(void)
   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
   {
 		TimingPos++;
-		Timing--;
 		TimingDelay--;
+		Timing--;
     TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
   }
 }

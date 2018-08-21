@@ -36,8 +36,8 @@ void Init_GPIO(void)
 }
 
 /**
-  * @brief  Config Systick
-  * @param  Divide for divde system code clock
+  * @brief  Config for TIM2
+  * @param  None
   * @retval None
   */
 void Init_Timer(void)
@@ -50,7 +50,11 @@ void Init_Timer(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	
 	// Configure TIM2
-	TIM_TimeBaseStructure.TIM_Prescaler = 9;
+	// prescaler = 1,  Period = 35  for 0.000,001s
+	// prescaler = 9,  Period = 71  for 0.000,01s
+	// prescaler = 49, Period = 71  for 0.000,05s
+	
+	TIM_TimeBaseStructure.TIM_Prescaler = 49;
 	TIM_TimeBaseStructure.TIM_Period = 71;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);

@@ -12,11 +12,13 @@ void InputData(uint8_t Bit)
 {
 	if (Bit)
 	{
-		GPIO_SetBits(GPIOA, GPIO_Pin_1);
+		// Set Pin A1 to high
+		GPIOA->BSRR = 0x0002;
 	}
 	else
 	{
-		GPIO_ResetBits(GPIOA, GPIO_Pin_1);
+		// Set Pin A1 to Low
+		GPIOA->BRR  = 0x0002;
 	}
 }
 
@@ -27,10 +29,10 @@ void InputData(uint8_t Bit)
   */
 void ShiftLED(void)
 {
-	// Make sure Pin A2 is LOW to set HIGH
-	GPIO_ResetBits(GPIOA, GPIO_Pin_2);
-	// SET Pin A3 to send Data
-	GPIO_SetBits(GPIOA, GPIO_Pin_2);
+	// Set Pin A2 to LOW for getting ready to shift bit
+	GPIOA->BRR =  0x0004;
+	// Set Pin A2 to HIGH to shift bit
+	GPIOA->BSRR = 0x0004;
 }
 
 /**
@@ -40,10 +42,10 @@ void ShiftLED(void)
   */
 void SendData(void)
 {
-	// Make sure Pin A3 is LOW to set HIGH
-	GPIO_ResetBits(GPIOA, GPIO_Pin_3);
-	// SET Pin A3 to send Data
-	GPIO_SetBits(GPIOA, GPIO_Pin_3);
+	// Set Pin A3 to LOW for getting ready to send data
+	GPIOA->BRR =  0x0008;
+	// Set Pin A3 to HIGH to send data
+	GPIOA->BSRR = 0x0008;
 }
 
 /**
@@ -53,12 +55,12 @@ void SendData(void)
   */
 void ClearData(void)
 {
-	// Set Pin A4 to low to clear Data
-	GPIO_ResetBits(GPIOA, GPIO_Pin_4);
+	// Set Pin A4 to LOW for enable clear data
+	GPIOA->BRR =  0x0010;
 	// Send Data
 	SendData();
-	// Set Pin A4 back to high
-	GPIO_SetBits(GPIOA, GPIO_Pin_4);
+	// Set Pin A4 back to high to disable clear data
+	GPIOA->BSRR = 0x0010;
 }	
 
 /**
@@ -77,11 +79,12 @@ void Delay(uint32_t TimeDelay)
   * @param  Pos for input user's position, StandardError amount of reality and theory,  
   * @retval 1 (true) or 0 (false)
   */
-uint8_t StartPos(uint16_t Pos)
+uint8_t StartPos(uint32_t Pos)
 { 
 	if (Pos>355)
 		Pos=355;
-	if (TimingPos >= Pos*TimePerAngle && TimingPos <= (Pos*TimePerAngle))
+	Pos = Pos*TimePerAngle;
+	if (TimingPos <= Pos && Pos <= TimingPos + TimePerAngle)
 	{
 		return 1;
 	}
@@ -96,38 +99,21 @@ uint8_t StartPos(uint16_t Pos)
   */
 void DisplayOneIC(uint8_t Data)
 {
-	if (Data & 0b10000000)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
-	
-	if (Data & 0b01000000)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
-	
-	if (Data & 0b00100000)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
-	
-	
-	if (Data & 0b00010000)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
-	
-	if (Data & 0b00001000)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
+	uint8_t i,Bit=0b10000000;
+	for (i=0; i<8; i++)
+	{
+		if (Data & Bit)			GPIOA->BSRR = 0x0002; // Set Pin A1 to high
+		else								GPIOA->BRR  = 0x0002;	// Set Pin A1 to Low
 
-	if (Data & 0b00000100)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
-	
-	if (Data & 0b00000010)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
-	
-	if (Data & 0b00000001)			InputData(1);
-	else												InputData(0);
-	ShiftLED();
+		//ShiftLED();
+		// Set Pin A2 to LOW for getting ready to shift bit
+		GPIOA->BRR =  0x0004;
+		// Set Pin A2 to HIGH to shift bit
+		GPIOA->BSRR = 0x0004;
+		
+		// Shift left para "Bit" for getting ready to compare the next data
+		Bit=Bit>>1;
+	}
 }
 
 /**
@@ -142,7 +128,11 @@ void DisplayLine(uint8_t U5, uint8_t U4, uint8_t U3, uint8_t U2, uint8_t U1)
 	DisplayOneIC(U3);
 	DisplayOneIC(U2);
 	DisplayOneIC(U1);
-	SendData();
+	//SendData();
+	// Set Pin A3 to LOW for getting ready to send data
+	GPIOA->BRR =  0x0008;
+	// Set Pin A3 to HIGH to send data
+	GPIOA->BSRR = 0x0008;
 }
 
 /**
@@ -382,323 +372,322 @@ void DisplayEarth(uint16_t Pos)
 	if (StartPos(Pos))
 	{
 		DisplayLine(0,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b01100000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11100000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11100000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b11100000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		// 10x2
 		DisplayLine(0,0b11100000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11110000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,0b11111000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,255,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b000000001,255,0b10000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,255,0b11000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,255,0b11000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,255,0b11110000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,255,0b11111000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,255,0b11111100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x3
 		DisplayLine(0,255,0b11110100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b11001111,0b11100100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b10001111,0b11100110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00001111,0b11100010,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00000111,0b11000001,0b00110000,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00000111,0b11000001,0b11111000,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00111111,0b10000000,0b11111100,0b00111110);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00111111,0,255,0b11111100);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00011110,0,255,0b11110000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00100000,0b00011010,0,0b01111111,0b11100000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 
 		//10x4
 		DisplayLine(0b00110000,0b00001000,0,0b01111111,0b11000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b01110000,0b00001000,0,0b01111111,0b10000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b01111001,0b00000100,0,0b00011111,0b10000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(255,0b10000000,0,0b00011110,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(255,0b11000000,0,0b00011110,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b01111111,0b11000000,0,0b00011100,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b01111111,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00111110,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00011100,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001000,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x5
 		DisplayLine(0,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0,0b00011000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0,0b00111100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00000011,0b11111110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b01100010,0b11111110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00111110,0b11111110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b00001100,0b11111110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0b10011101,0b11111110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000001,0b10011000,255,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000001,0b11011000,0b01111111,0b10010000,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x6
 		DisplayLine(0b00000011,0b10011000,0b01111111,0b11111110,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000010,0b00011100,0b01111111,255,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000110,0b10111100,0b01111111,0b11111110,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b11111100,0b01111111,0b11111110,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000101,0b11111010,0b01111111,0b11111100,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000010,0b11111010,0b01011111,0b11110000,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000010,0b11111011,0b11001111,0b11110000,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,255,0b11100111,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000001,255,0b11111010,0b00001100,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,0b11111001,0b10111010,0b00011000,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x7
 		DisplayLine(0b00000011,0b11111000,0b11010000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,255,0b11010000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,255,0b11000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,255,0b11000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,255,0b11000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001101,255,0b11100000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,255,0b11110000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000101,255,0b11111100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,255,0b11110000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001111,255,0b11100000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x8
 		DisplayLine(0b00001111,255,0b11100000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00011111,255,0b11100000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00011111,255,0b11110000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00011111,255,0b11111000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00111111,255,0b11111100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00111111,255,0b11111110,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00011111,255,0b11100100,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001111,255,0b11100000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001111,255,0b11100000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001111,0b11111110,0b11000000,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x9
 		DisplayLine(0b00001111,0b11111110,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001111,255,0,0b00000011,0b11000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b11111100,0,0b00000011,0b10000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b11111100,0,0b00000111,0b10000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b11011000,0,0b00000111,0b10000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b10000000,0,0b00001111,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00001111,0b10000000,0,0b00001111,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b10000000,0,0b00000111,0b10000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b10000000,0,0b00000111,0b11000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000111,0b10000000,0,0b00001111,0b11000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		
 		//10x10
 		DisplayLine(0b00000111,0b01100000,0,0b00000111,0b11010000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,0b01000000,0,0b00000001,0b11000000);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,0b10000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,0b10000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000011,0b10000000,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000010,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000010,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0b00000010,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
+		
 		DisplayLine(0,0,0,0,0);
-		TimingDelay = TimePerAngle*3;
-		while(TimingDelay);
+		Delay(TimePerAngle*3);
 	}
 }
 
