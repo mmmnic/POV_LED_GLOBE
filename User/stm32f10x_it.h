@@ -35,7 +35,7 @@
 uint32_t 	Timing=0;
 uint32_t 	TimingDelay=0;
 uint32_t	TimingPos=0;
-uint32_t	TimePerAngle=24;
+uint32_t	TimePerAngle=25;
 
 
 void NMI_Handler(void);

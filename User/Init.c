@@ -50,11 +50,12 @@ void Init_Timer(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	
 	// Configure TIM2
-	// prescaler = 1,  Period = 35  for 0.000,001s
-	// prescaler = 9,  Period = 71  for 0.000,01s
-	// prescaler = 49, Period = 71  for 0.000,05s
+	// prescaler = 1,  Period = 35 for 0.000,001(s)
+	// prescaler = 9,  Period = 71 for 0.000,01	(s)
+	// prescaler = 24, Period = 71 for 0.000,025(s)
+	// prescaler = 49, Period = 71 for 0.000,05	(s)
 	
-	TIM_TimeBaseStructure.TIM_Prescaler = 49;
+	TIM_TimeBaseStructure.TIM_Prescaler = 24;
 	TIM_TimeBaseStructure.TIM_Period = 71;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);

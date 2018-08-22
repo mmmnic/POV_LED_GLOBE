@@ -157,7 +157,6 @@ void EXTI9_5_IRQHandler(void)
 {
 	if (EXTI_GetITStatus(EXTI_Line9) != RESET)
 	{
-		//TimePerAngle = TimingPos/300;
 		TimingPos = 0;
 		EXTI_ClearITPendingBit(EXTI_Line9);
 	}

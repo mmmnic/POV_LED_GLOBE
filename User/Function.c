@@ -2,6 +2,8 @@
 #include <Function.h>
 
 /* Private variables ---------------------------------------------------------*/
+uint16_t PreviousPos=0;
+
 
 /**
   * @brief  InputData for IC
@@ -79,17 +81,19 @@ void Delay(uint32_t TimeDelay)
   * @param  Pos for input user's position, StandardError amount of reality and theory,  
   * @retval 1 (true) or 0 (false)
   */
-uint8_t StartPos(uint32_t Pos)
+uint8_t StartPos(uint16_t Pos)
 { 
-	if (Pos>355)
-		Pos=355;
-	Pos = Pos*TimePerAngle;
-	if (TimingPos <= Pos && Pos <= TimingPos + TimePerAngle)
+	uint16_t PosTemp;
+	if (Pos-PreviousPos<=0)
 	{
-		return 1;
+		PreviousPos=0;
 	}
 	else
-		return 0;
+	{
+		PosTemp=(Pos-PreviousPos)*TimePerAngle;
+	}
+	Delay(PosTemp);
+	PreviousPos=Pos;
 }
 
 /**
@@ -358,8 +362,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 				
 				//Display
 				DisplayLine(Data[0], Data[1], Data[2], Data[3], Data[4]);
-				TimingDelay = TimePerAngle*3;
-				while(TimingDelay);
+				Delay(TimePerAngle*3);
 			}
 			ClearData();
 			Delay(TimePerAngle*5);
