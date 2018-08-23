@@ -77,23 +77,18 @@ void Delay(uint32_t TimeDelay)
 }
 
 /**
-  * @brief  Check position of hall sensor
+  * @brief  Check position of sensor
   * @param  Pos for input user's position, StandardError amount of reality and theory,  
   * @retval 1 (true) or 0 (false)
   */
 uint8_t StartPos(uint16_t Pos)
 { 
-	uint16_t PosTemp;
-	if (Pos-PreviousPos<=0)
+	if (TimingPos <= Pos*TimePerAngle && Pos*TimePerAngle <= TimingPos + TimePerAngle)
 	{
-		PreviousPos=0;
+		return 1;
 	}
 	else
-	{
-		PosTemp=(Pos-PreviousPos)*TimePerAngle;
-	}
-	Delay(PosTemp);
-	PreviousPos=Pos;
+		return 0;
 }
 
 /**

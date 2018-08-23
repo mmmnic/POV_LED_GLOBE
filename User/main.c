@@ -7,46 +7,56 @@ int main(void)
 	Init_Timer();
 	Init_Interrupt();
 
-	
+//	if (StartPos(0))
+//		DisplayLine(255,255,255,255,255);
+//	if (StartPos(90))
+//		DisplayLine(255,255,255,255,255);
+//	if (StartPos(180))
+//		DisplayLine(255,255,255,255,255);
+//	if (StartPos(270))
+//		DisplayLine(255,255,255,255,255);
+//	ClearData();
+	uint8_t  t;
+	uint16_t i=1;
+	uint16_t loop;
 	while (1)
 	{
-		uint16_t i, loop=3;
-		
-		// Display "WELCOME TO UIT" 3 times
-		while (loop)
+		for (t=0; t<5; t++)
 		{
-			for (i=0; i<355; i++)
+			for (i=370;i<=370; i--)
 			{
-				Timing=750*TimePerAngle;
-				while(Timing<750*TimePerAngle)
+				loop=2500;
+				while(loop)
+				{
+					loop--;
 					DisplayWordGlobe(i, "", "WELCOME", "  TO  ", "  UIT ", "");
-			}
-			loop--;
+				}
+			}	
 		}
 		
-		// Display "WELCOME TO COMPUTER ENGINEERING" 3 times 
-		loop=3;
-		while (loop)
+		for (t=0; t<5; t++)
 		{
-			for (i=0; i<355; i++)
+			for (i=370;i<=370; i--)
 			{
-				Timing=750*TimePerAngle;
-				while(Timing<750*TimePerAngle)
+				loop=2500;
+				while(loop)
+				{
+					loop--;
 					DisplayWordGlobe(i, "", "WELCOME TO ", " COMPUTER ", "ENGINEERING", "");
+				}
 			}
-			loop--;
 		}
-		
-		// Display Earth 3 times
-		loop=3;
-		while (loop)
+		for (t=0; t<2; t++)
 		{
-			for (i=0; i<355; i+=5)
+			for (i=0;i<370; i++)
 			{
-				DisplayEarth(i);
+				loop=2750;
+				while(loop)
+				{
+					loop--;
+					DisplayEarth(i);
+				}
 			}
-		loop--;
 		}
-		loop=3;
 	}
 }
