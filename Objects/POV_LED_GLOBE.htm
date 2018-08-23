@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\POV_LED_GLOBE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\POV_LED_GLOBE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Aug 23 15:07:01 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Aug 23 19:01:52 2018
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -332,14 +332,16 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
 <P><STRONG><a name="[52]"></a>Delay</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
@@ -358,7 +360,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOneIC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
@@ -494,7 +497,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[50]"></a>StartPos</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, .\objects\function.o(i.StartPos))
-<BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
@@ -548,11 +552,15 @@ Global Symbols
 
 <P><STRONG><a name="[75]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 344 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
 <LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
