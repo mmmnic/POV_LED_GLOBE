@@ -107,5 +107,25 @@ int main(void)
 				}
 			}
 		}
+		
+		// Display Heart
+		time=450000;
+		while(time)
+		{
+			DisplayHeart(335);
+			ClearData();
+			DisplayHeart(60);
+			ClearData();
+			DisplayHeart(120);
+			ClearData();
+			DisplayHeart(180);
+			ClearData();
+			DisplayHeart(24);
+			ClearData();
+			DisplayHeart(270);
+			ClearData();
+			time--;
+		}
+		
 	}
 }

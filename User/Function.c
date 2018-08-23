@@ -689,4 +689,76 @@ void DisplayEarth(uint16_t Pos)
 	}
 }
 
-
+void DisplayHeart(uint16_t Pos)
+{
+	if (StartPos(Pos))
+	{
+		DisplayLine(0,0b00000001,0b11100000,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00000011,0b11110000,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00000111,0b11111000,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00001111,0b11111100,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00011111,0b11111110,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00111111,255,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00111111,255,0b10000000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00111111,255,0b11000000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00011111,255,0b11100000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00001111,255,0b11110000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00001111,255,0b11111000,0);
+		Delay(TimePerAngle*3);
+		
+		//Center
+		DisplayLine(0,0b00000111,255,0b11111100,0);
+		Delay(TimePerAngle*3);
+		//Center
+		
+		DisplayLine(0,0b00001111,255,0b11111000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00001111,255,0b11110000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00011111,255,0b11100000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00111111,255,0b11000000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00111111,255,0b10000000,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00111111,255,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00011111,0b11111110,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00000111,0b11111000,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00000011,0b11110000,0,0);
+		Delay(TimePerAngle*3);
+		
+		DisplayLine(0,0b00000001,0b11100000,0,0);
+		Delay(TimePerAngle*3);
+	}
+}
