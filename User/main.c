@@ -71,7 +71,7 @@ int main(void)
 		{
 			for (i=370;i<=370; i--)
 			{
-				time=1500;
+				time=2500;
 				while(time)
 				{
 					time--;
@@ -81,7 +81,7 @@ int main(void)
 		}
 		
 		// Display "WELCOME TO COMPUTER ENGINEERING"
-		for (loop=0; loop<5; loop++)
+		for (loop=0; loop<4; loop++)
 		{
 			for (i=370;i<=370; i--)
 			{
@@ -95,11 +95,11 @@ int main(void)
 		}
 		
 		// Display earth
-		for (loop=0; loop<5; loop++)
+		for (loop=0; loop<3; loop++)
 		{
 			for (i=370;i<=370; i--)
 			{
-				time=2750;
+				time=2000;
 				while(time)
 				{
 					time--;
@@ -109,20 +109,16 @@ int main(void)
 		}
 		
 		// Display Heart
-		time=450000;
+		time=400000;
 		while(time)
 		{
-			DisplayHeart(335);
+			DisplayHeart(320);
 			ClearData();
-			DisplayHeart(60);
+			DisplayHeart(55);
 			ClearData();
-			DisplayHeart(120);
+			DisplayHeart(145);
 			ClearData();
-			DisplayHeart(180);
-			ClearData();
-			DisplayHeart(24);
-			ClearData();
-			DisplayHeart(270);
+			DisplayHeart(235);
 			ClearData();
 			time--;
 		}
