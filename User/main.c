@@ -18,110 +18,17 @@ int main(void)
 //	ClearData();
 	uint32_t time,i;
 	uint8_t loop;
+	
 	while (1)
 	{
-		// Display all globe
-		DisplayLine(255,255,255,255,255);
-		Delay(150000);
-		
-		// blink 10 times
-		loop=10;
-		while (loop)
+		for (i=0; i<=360; i++)
 		{
-			ClearData();
-			Delay(20000);
-			DisplayLine(255,255,255,255,255);
-			Delay(20000);
-			loop--;
-		}
-		
-		// display half size 10 times
-		for (loop=0; loop<10; loop++)
-		{
-			time=200000;
-			while(time)
+			time=2000;
+			while(time<=3000)
 			{
-				if (StartPos(0))
-				{
-					DisplayLine(255,255,255,255,255);
-				}
-				if (StartPos(180))
-				{
-					ClearData();
-				}
+				DisplayEarth(i);
 				time--;
 			}
-			time=200000;
-			while(time)
-			{
-				if (StartPos(0))
-				{
-					ClearData();
-				}
-				if (StartPos(180))
-				{
-					DisplayLine(255,255,255,255,255);
-				}
-				time--;
-			}
-		}	
-
-		// Display "WELCOME TO UIT"
-		for (loop=0; loop<5; loop++)
-		{
-			for (i=370;i<=370; i--)
-			{
-				time=2500;
-				while(time)
-				{
-					time--;
-					DisplayWordGlobe(i, "", "WELCOME", "  TO  ", "  UIT ", "");
-				}
-			}	
 		}
-		
-		// Display "WELCOME TO COMPUTER ENGINEERING"
-		for (loop=0; loop<4; loop++)
-		{
-			for (i=370;i<=370; i--)
-			{
-				time=2500;
-				while(time)
-				{
-					time--;
-					DisplayWordGlobe(i, "", " COMPUTER", "ENGINEERING", "   CEEC", "");
-				}
-			}
-		}
-		
-		// Display earth
-		for (loop=0; loop<3; loop++)
-		{
-			for (i=370;i<=370; i--)
-			{
-				time=2000;
-				while(time)
-				{
-					time--;
-					DisplayEarth(i);
-				}
-			}
-		}
-		
-		// Display Heart
-		time=400000;
-		while(time)
-		{
-			DisplayHeart(320);
-			ClearData();
-			DisplayHeart(55);
-			ClearData();
-			DisplayHeart(145);
-			ClearData();
-			DisplayHeart(235);
-			ClearData();
-			time--;
-		}
-		
 	}
 }

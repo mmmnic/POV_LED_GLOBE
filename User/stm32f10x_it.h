@@ -32,10 +32,9 @@
 /* Exported functions ------------------------------------------------------- */
 /* Global variables ---------------------------------------------------------*/
 // Global para
-uint32_t	Timing=0;
 uint32_t	TimingDelay=0;
 uint32_t	TimingPos=0;
-uint32_t	TimePerAngle=10;
+uint32_t	TimePerAngle=0;
 
 
 void NMI_Handler(void);

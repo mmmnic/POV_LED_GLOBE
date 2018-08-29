@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\POV_LED_GLOBE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\POV_LED_GLOBE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Aug 24 10:51:35 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Aug 29 15:59:36 2018
 <BR><P>
-<H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         44 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
+main &rArr; DisplayEarth &rArr; DisplayLine &rArr; DisplayOneIC
 <P>
 <H3>
 Mutually Recursive functions
@@ -99,7 +99,7 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry.o)(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
-<P><STRONG><a name="[6d]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry2.o)(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[69]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry2.o)(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[4a]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry5.o)(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -109,15 +109,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[6e]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry7b.o)(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[6a]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry7b.o)(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[6f]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry8b.o)(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[6b]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry8b.o)(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[70]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry9a.o)(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[6c]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry9a.o)(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[71]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry10a.o)(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[6d]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry10a.o)(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[72]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry11a.o)(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[6e]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(entry11a.o)(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[49]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, .\objects\startup_stm32f10x_hd.o(.text))
 
@@ -306,62 +306,39 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, .\objects\startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[56]"></a>strlen</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(strlen.o)(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-</UL>
-
 <P><STRONG><a name="[4b]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(init.o)(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[73]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(init.o)(.text), UNUSED)
+<P><STRONG><a name="[6f]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(init.o)(.text), UNUSED)
 
 <P><STRONG><a name="[4]"></a>BusFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.BusFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[57]"></a>CharCVT</STRONG> (Thumb, 476 bytes, Stack size 12 bytes, .\objects\function.o(i.CharCVT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = CharCVT
-</UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-</UL>
-
 <P><STRONG><a name="[4d]"></a>ClearData</STRONG> (Thumb, 22 bytes, Stack size 4 bytes, .\objects\function.o(i.ClearData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = ClearData
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendData
 </UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[52]"></a>Delay</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
-<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHeart
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
+<P><STRONG><a name="[52]"></a>Delay</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
+<BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
-<P><STRONG><a name="[4f]"></a>DisplayEarth</STRONG> (Thumb, 2984 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayEarth))
+<P><STRONG><a name="[4f]"></a>DisplayEarth</STRONG> (Thumb, 2366 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayEarth))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayEarth &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
-</UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[53]"></a>DisplayHeart</STRONG> (Thumb, 592 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayHeart))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayHeart &rArr; DisplayLine &rArr; DisplayOneIC
-</UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -369,109 +346,93 @@ Global Symbols
 <P><STRONG><a name="[51]"></a>DisplayLine</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, .\objects\function.o(i.DisplayLine))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DisplayLine &rArr; DisplayOneIC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOneIC
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOneIC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHeart
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
-<P><STRONG><a name="[54]"></a>DisplayOneIC</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, .\objects\function.o(i.DisplayOneIC))
+<P><STRONG><a name="[53]"></a>DisplayOneIC</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, .\objects\function.o(i.DisplayOneIC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DisplayOneIC
 </UL>
 <BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
 </UL>
 
-<P><STRONG><a name="[55]"></a>DisplayWordGlobe</STRONG> (Thumb, 356 bytes, Stack size 72 bytes, .\objects\function.o(i.DisplayWordGlobe))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
-</UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CharCVT
-</UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[21]"></a>EXTI9_5_IRQHandler</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, .\objects\stm32f10x_it.o(i.EXTI9_5_IRQHandler))
+<P><STRONG><a name="[21]"></a>EXTI9_5_IRQHandler</STRONG> (Thumb, 66 bytes, Stack size 8 bytes, .\objects\stm32f10x_it.o(i.EXTI9_5_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = EXTI9_5_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_GetITStatus
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_GetITStatus
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[59]"></a>EXTI_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\objects\stm32f10x_exti.o(i.EXTI_ClearITPendingBit))
+<P><STRONG><a name="[55]"></a>EXTI_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\objects\stm32f10x_exti.o(i.EXTI_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 </UL>
 
-<P><STRONG><a name="[58]"></a>EXTI_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, .\objects\stm32f10x_exti.o(i.EXTI_GetITStatus))
+<P><STRONG><a name="[54]"></a>EXTI_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, .\objects\stm32f10x_exti.o(i.EXTI_GetITStatus))
 <BR><BR>[Called By]<UL><LI><a href="#[21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI9_5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[61]"></a>EXTI_Init</STRONG> (Thumb, 142 bytes, Stack size 0 bytes, .\objects\stm32f10x_exti.o(i.EXTI_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
+<P><STRONG><a name="[5d]"></a>EXTI_Init</STRONG> (Thumb, 142 bytes, Stack size 0 bytes, .\objects\stm32f10x_exti.o(i.EXTI_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 </UL>
 
-<P><STRONG><a name="[60]"></a>GPIO_EXTILineConfig</STRONG> (Thumb, 60 bytes, Stack size 12 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_EXTILineConfig))
+<P><STRONG><a name="[5c]"></a>GPIO_EXTILineConfig</STRONG> (Thumb, 60 bytes, Stack size 12 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_EXTILineConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = GPIO_EXTILineConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 </UL>
 
-<P><STRONG><a name="[5c]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_Init))
+<P><STRONG><a name="[58]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
+<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
 </UL>
 
-<P><STRONG><a name="[5d]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_ResetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
+<P><STRONG><a name="[59]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_ResetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
 </UL>
 
-<P><STRONG><a name="[5e]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
+<P><STRONG><a name="[5a]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_gpio.o(i.GPIO_SetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
 </UL>
 
 <P><STRONG><a name="[2]"></a>HardFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.HardFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[5a]"></a>Init_GPIO</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, .\objects\init.o(i.Init_GPIO))
+<P><STRONG><a name="[56]"></a>Init_GPIO</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, .\objects\init.o(i.Init_GPIO))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Init_GPIO &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5f]"></a>Init_Interrupt</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, .\objects\init.o(i.Init_Interrupt))
+<P><STRONG><a name="[5b]"></a>Init_Interrupt</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, .\objects\init.o(i.Init_Interrupt))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Init_Interrupt &rArr; NVIC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EXTILineConfig
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Init
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_EXTILineConfig
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[63]"></a>Init_Timer</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, .\objects\init.o(i.Init_Timer))
+<P><STRONG><a name="[5f]"></a>Init_Timer</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, .\objects\init.o(i.Init_Timer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Init_Timer &rArr; NVIC_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB1PeriphClockCmd
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_TimeBaseInit
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ITConfig
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Cmd
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearFlag
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -482,23 +443,23 @@ Global Symbols
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[62]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, .\objects\misc.o(i.NVIC_Init))
+<P><STRONG><a name="[5e]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, .\objects\misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
+<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 </UL>
 
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[64]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, .\objects\stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[60]"></a>RCC_APB1PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, .\objects\stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[5b]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, .\objects\stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
+<P><STRONG><a name="[57]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, .\objects\stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
 </UL>
 
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.SVC_Handler))
@@ -508,94 +469,85 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 </UL>
 
-<P><STRONG><a name="[50]"></a>StartPos</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, .\objects\function.o(i.StartPos))
-<BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHeart
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
+<P><STRONG><a name="[50]"></a>StartPos</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, .\objects\function.o(i.StartPos))
+<BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
 </UL>
 
 <P><STRONG><a name="[47]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, .\objects\system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
-<P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, .\objects\stm32f10x_it.o(i.TIM2_IRQHandler))
+<P><STRONG><a name="[26]"></a>TIM2_IRQHandler</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, .\objects\stm32f10x_it.o(i.TIM2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = TIM2_IRQHandler &rArr; TIM_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetITStatus
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_ClearITPendingBit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[66]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_ClearFlag))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[62]"></a>TIM_ClearFlag</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_ClearFlag))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[6c]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_ClearITPendingBit))
+<P><STRONG><a name="[68]"></a>TIM_ClearITPendingBit</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_ClearITPendingBit))
 <BR><BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[68]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[64]"></a>TIM_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[6b]"></a>TIM_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, .\objects\stm32f10x_tim.o(i.TIM_GetITStatus))
+<P><STRONG><a name="[67]"></a>TIM_GetITStatus</STRONG> (Thumb, 34 bytes, Stack size 12 bytes, .\objects\stm32f10x_tim.o(i.TIM_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = TIM_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_IRQHandler
 </UL>
 
-<P><STRONG><a name="[67]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_ITConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[63]"></a>TIM_ITConfig</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_ITConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
-<P><STRONG><a name="[65]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_TimeBaseInit))
-<BR><BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<P><STRONG><a name="[61]"></a>TIM_TimeBaseInit</STRONG> (Thumb, 122 bytes, Stack size 0 bytes, .\objects\stm32f10x_tim.o(i.TIM_TimeBaseInit))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 </UL>
 
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[74]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[70]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[75]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[71]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[76]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[72]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 396 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 50 bytes, Stack size 0 bytes, .\objects\main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = main &rArr; DisplayEarth &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHeart
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
-<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
-<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
+<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayEarth
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL><P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[69]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, .\objects\system_stm32f10x.o(i.SetSysClock))
+<P><STRONG><a name="[65]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, .\objects\system_stm32f10x.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[6a]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, .\objects\system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[66]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, .\objects\system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <P>
 <H3>

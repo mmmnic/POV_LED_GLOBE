@@ -55,7 +55,7 @@ void Init_Timer(void)
 	// prescaler = 24, Period = 71 for 0.000,025(s)
 	// prescaler = 49, Period = 71 for 0.000,05	(s)
 	
-	TIM_TimeBaseStructure.TIM_Prescaler = 24;
+	TIM_TimeBaseStructure.TIM_Prescaler = 9;
 	TIM_TimeBaseStructure.TIM_Period = 71;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);

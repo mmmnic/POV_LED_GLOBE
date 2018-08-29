@@ -36,7 +36,8 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-
+uint8_t Rounds=0;
+uint32_t AverageTime=0;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -141,8 +142,10 @@ void TIM2_IRQHandler(void)
   if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
   {
 		TimingPos++;
-		TimingDelay--;
-		Timing--;
+		if (TimingDelay>0)
+		{
+			TimingDelay--;
+		}
     TIM_ClearITPendingBit(TIM2, TIM_FLAG_Update);
   }
 }
@@ -156,6 +159,12 @@ void EXTI9_5_IRQHandler(void)
 {
 	if (EXTI_GetITStatus(EXTI_Line9) != RESET)
 	{
+		Rounds++;
+		if (Rounds>=5)
+		{
+			TimePerAngle=TimingPos/Steps;
+			Rounds=0;
+		}
 		TimingPos = 0;
 		EXTI_ClearITPendingBit(EXTI_Line9);
 	}
