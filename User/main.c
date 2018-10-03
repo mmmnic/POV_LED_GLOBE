@@ -21,9 +21,9 @@ int main(void)
 	
 	while (1)
 	{
-		for (i=0; i<=360; i++)
+		for (i=0; i<360; i++)
 		{
-			time=2000;
+			time=3000;
 			while(time<=3000)
 			{
 				DisplayEarth(i);

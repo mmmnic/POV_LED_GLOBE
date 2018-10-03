@@ -76,14 +76,15 @@ Section Cross References
     .\objects\function.o(i.DisplayHeart) refers to .\objects\function.o(i.StartPos) for StartPos
     .\objects\function.o(i.DisplayHeart) refers to .\objects\function.o(i.DisplayLine) for DisplayLine
     .\objects\function.o(i.DisplayHeart) refers to .\objects\function.o(i.Delay) for Delay
+    .\objects\function.o(i.DisplayHeart) refers to .\objects\function.o(i.ClearData) for ClearData
     .\objects\function.o(i.DisplayHeart) refers to .\objects\stm32f10x_it.o(.data) for TimePerAngle
     .\objects\function.o(i.DisplayLine) refers to .\objects\function.o(i.DisplayOneIC) for DisplayOneIC
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.StartPos) for StartPos
-    .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.ClearData) for ClearData
     .\objects\function.o(i.DisplayWordGlobe) refers to C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(strlen.o)(.text) for strlen
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.CharCVT) for CharCVT
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.DisplayLine) for DisplayLine
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.Delay) for Delay
+    .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\function.o(i.ClearData) for ClearData
     .\objects\function.o(i.DisplayWordGlobe) refers to .\objects\stm32f10x_it.o(.data) for TimePerAngle
     .\objects\function.o(i.StartPos) refers to .\objects\stm32f10x_it.o(.data) for TimePerAngle
     .\objects\main.o(i.main) refers to .\objects\init.o(i.Init_GPIO) for Init_GPIO
@@ -255,13 +256,13 @@ Removing Unused input sections from the image.
     Removing .\objects\stm32f10x_tim.o(i.TIM_UpdateDisableConfig), (24 bytes).
     Removing .\objects\stm32f10x_tim.o(i.TIM_UpdateRequestConfig), (24 bytes).
     Removing .\objects\function.o(i.CharCVT), (684 bytes).
-    Removing .\objects\function.o(i.DisplayHeart), (508 bytes).
+    Removing .\objects\function.o(i.DisplayHeart), (512 bytes).
     Removing .\objects\function.o(i.DisplayWordGlobe), (356 bytes).
     Removing .\objects\function.o(i.InputData), (24 bytes).
     Removing .\objects\function.o(i.ShiftLED), (16 bytes).
     Removing .\objects\function.o(.data), (2 bytes).
 
-149 unused section(s) (total 7638 bytes) removed from the image.
+149 unused section(s) (total 7642 bytes) removed from the image.
 
 ==============================================================================
 

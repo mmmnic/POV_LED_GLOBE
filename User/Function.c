@@ -293,7 +293,6 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 {
 	if (StartPos(Pos))
 	{
-		ClearData();
 		// Find longest word
 		uint8_t i, max,Data[5], ArrStrLen[5] = {strlen(s0), strlen(s1), strlen(s2), strlen(s3), strlen(s4)};
 		max = ArrStrLen[0];
@@ -364,7 +363,8 @@ void DisplayWordGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char
 			ClearData();
 			Delay(TimePerAngle);
 		}
-	}		
+	}	
+	ClearData();	
 }
 
 void DisplayEarth(uint16_t Pos)
@@ -761,4 +761,5 @@ void DisplayHeart(uint16_t Pos)
 		DisplayLine(0,0b00000001,0b11100000,0,0);
 		Delay(TimePerAngle);
 	}
+	ClearData();
 }

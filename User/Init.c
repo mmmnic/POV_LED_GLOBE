@@ -85,7 +85,8 @@ void Init_Interrupt(void)
 	// Open clock
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
 	
-	// Mapping
+	
+	// Connect EXTI9 Line to PB9 pin */
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource9);
 	// Clear pending
 	EXTI_ClearITPendingBit(EXTI_Line9);
