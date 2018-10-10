@@ -105,7 +105,7 @@ void DisplayOneIC(uint8_t Data)
 		if (Data & Bit)			GPIOA->BSRR = 0x0002; // Set Pin A1 to high
 		else								GPIOA->BRR  = 0x0002;	// Set Pin A1 to Low
 
-		//ShiftLED();
+		// ShiftLED();
 		// Set Pin A2 to LOW for getting ready to shift bit
 		GPIOA->BRR =  0x0004;
 		// Set Pin A2 to HIGH to shift bit
