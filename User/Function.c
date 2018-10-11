@@ -279,6 +279,61 @@ uint8_t CharCVT(char c, uint8_t times)
 			uint8_t Space[5]={0,0,0,0,0};
 			return Space[times];
 		}
+		case '0':
+		{
+			uint8_t So[5]={0b01111100,0b10100010,0b10010010,0b10001010,0b01111100};
+			return So[times];
+		}
+		case '1':
+		{
+			uint8_t So[5]={0b00000000,0b01000100,0b11111110,0b00000010,0b00000000};
+			return So[times];
+		}
+		case '2':
+		{
+			uint8_t So[5]={0b01000010,0b10000110,0b10001010,0b10010010,0b01100010};
+			return So[times];
+		}
+		case '3':
+		{
+			uint8_t So[5]={0b10000100,0b10000010,0b10010010,0b10110010,0b11001100};
+			return So[times];
+		}
+		case '4':
+		{
+			uint8_t So[5]={0b00011000,0b00101000,0b01001000,0b11111111,0b00001000};
+			return So[times];
+		}
+		case '5':
+		{
+			uint8_t So[5]={0b11100100,0b10100010,0b10100010,0b10100010,0b10011100};
+			return So[times];
+		}
+		case '6':
+		{
+			uint8_t So[5]={0b01111100,0b10010010,0b10010010,0b10010010,0b01001100};
+			return So[times];
+		}
+		case '7':
+		{
+			uint8_t So[5]={0b10000000,0b10001110,0b10010000,0b10100000,0b11000000};
+			return So[times];
+		}
+		case '8':
+		{
+			uint8_t So[5]={0b01101100,0b10010010,0b10010010,0b10010010,0b01101100};
+			return So[times];
+		}
+		case '9':
+		{
+			uint8_t So[5]={0b01100100,0b10010010,0b10010010,0b10010010,0b01111100};
+			return So[times];
+		}
+		case '-':
+		{
+			uint8_t Dau[5]={0b00010000,0b00010000,0b00010000,0b00010000,0b00010000};
+			return Dau[times];
+		}
 	}
 	
 	return 0;
