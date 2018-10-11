@@ -20,3 +20,4 @@ uint8_t CharCVT(char c, uint8_t times);;
 void DisplayWordGlobe(uint16_t Pos, char *s1, char *s2, char *s3, char *s4, char *s5);
 void DisplayEarth(uint16_t Pos);
 void DisplayHeart(uint16_t Pos);
+void DisplayHSVLogo(uint16_t Pos);
