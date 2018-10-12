@@ -21,18 +21,18 @@ int main(void)
 	
 	while (1)
 	{
-		time=1000000;
+		time=500000;
 		while(time>0)
 		{
 			DisplayWordGlobe(273,""," CHAO MUNG","DAI HOI IV","","");
 			time--;
 		}
-		for (loop=0; loop<3; loop++)
+		for (loop=0; loop<2; loop++)
 		{
 			for (i=273; i!=274; i--)
 			{
-				time=2500;
-				while(time<=2500)
+				time=2000;
+				while(time<=2000)
 				{
 					DisplayWordGlobe(i,""," CHAO MUNG","DAI HOI IV","","");
 					time--;
@@ -42,90 +42,48 @@ int main(void)
 			}
 		}
 
-		time=1000000;
-		while(time>0)
-		{
-			DisplayWordGlobe(270,"","HOI SINH VIEN","  VIET NAM  ","","");
-			time--;
-		}
-		for (loop=0; loop<3; loop++)
-		{
-			for (i=270; i!=271; i--)
-			{
-				time=3000;
-				while(time<=3000)
-				{
-					DisplayWordGlobe(i,"","HOI SINH VIEN","   VIET NAM","","");
-					time--;
-				}
-				if (i==1)
-					i=359;
-			}
-		}
-	
 		
-		time=1000000;
+		time=1500000;
 		while(time>0)
 		{
-			DisplayWordGlobe(273,"","  DAI HOI","2018 - 2020","","");
+			DisplayHSVLogo(273);
 			time--;
 		}
 		for (loop=0; loop<3; loop++)
 		{
-			for (i=273; i!=274; i--)
+			for (i=273; i!=272; i++)
 			{
 				time=3000;
 				while(time<=3000)
 				{
-					DisplayWordGlobe(i,"","  DAI HOI","2018 - 2020","","");
+					DisplayHSVLogo(i);
 					time--;
 				}
-				if (i==1)
-					i=359;
+				if (i==359)
+					i=0;
 			}
 		}
-
-			time=1500000;
-			while(time>0)
-			{
-				DisplayHSVLogo(273);
-				time--;
-			}
-			for (loop=0; loop<3; loop++)
-			{
-				for (i=273; i!=272; i++)
-				{
-					time=5000;
-					while(time<=5000)
-					{
-						DisplayHSVLogo(i);
-						time--;
-					}
-					if (i==359)
-						i=0;
-				}
-			}
-			time=1500000;
-			while(time>0)
-			{
-				DisplayHSVLogo(273);
-				time--;
-			}
+		time=1000000;
+		while(time>0)
+		{
+			DisplayHSVLogo(273);
+			time--;
+		}
 			
 		time=1000000;
 		while(time>0)
 		{
-			DisplayWordGlobe(281,"","   UIT   ","WE ARE ONE","","");
+			DisplayWordGlobe(300,""," TU TE ","TAI NANG"," TIEN BO","");
 			time--;
 		}
-		for (loop=0; loop<3; loop++)
+		for (loop=0; loop<2; loop++)
 		{
-			for (i=281; i!=282; i--)
+			for (i=300; i!=301; i--)
 			{
-				time=2500;
-				while(time<=2500)
+				time=3000;
+				while(time<=3000)
 				{
-					DisplayWordGlobe(i,"","   UIT   ","WE ARE ONE","","");
+					DisplayWordGlobe(i,""," TU TE ","TAI NANG"," TIEN BO","");
 					time--;
 				}
 				if (i==1)
@@ -135,33 +93,5 @@ int main(void)
 			}
 		}
 		
-		for (loop=0; loop<7; loop++)
-		{
-			time=250000;
-			while(time<=250000)
-			{
-				DisplayHeart(335);
-				time--;
-			}
-			time=250000;
-			while(time<=250000)
-			{
-				DisplayWordGlobe(347,"","","UIT", "", "");
-				time--;
-			}
-		}
-			
-		for (loop=0; loop<3; loop++)
-		{
-			for (i=0; i<360; i++)
-			{
-				time=1500;
-				while(time<=1500)
-				{
-					DisplayEarth(i);
-					time--;
-				}
-			}
-		}
 	}
 }
