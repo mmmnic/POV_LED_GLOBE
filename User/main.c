@@ -1,6 +1,5 @@
 #include <Function.h>
 
-void MiniDelay(uint16_t Time);
 
 int main(void)
 {
@@ -22,88 +21,109 @@ int main(void)
 	
 	while (1)
 	{
-		DisplayWordGlobe(300,"","CHAO MUNG","DAI HOI IV","","");
-		MiniDelay(500);
-		for (loop=0; loop<2; loop++)
+		time=1000000;
+		while(time>0)
 		{
-			for (i=300; i!=301; i--)
+			DisplayWordGlobe(273,""," CHAO MUNG","DAI HOI IV","","");
+			time--;
+		}
+		for (loop=0; loop<3; loop++)
+		{
+			for (i=273; i!=274; i--)
 			{
-				time=2000;
-				while(time<=2000)
+				time=2500;
+				while(time<=2500)
 				{
-					DisplayWordGlobe(i,"","CHAO MUNG","DAI HOI IV","","");
+					DisplayWordGlobe(i,""," CHAO MUNG","DAI HOI IV","","");
 					time--;
 				}
 				if (i==1)
-				{
-					i=355;
-				}
+					i=359;
 			}
 		}
-		DisplayWordGlobe(270,"","DAI HOI IV","HOI SINH VIEN VIET NAM","","");
-		MiniDelay(500);
-		for (loop=0; loop<2; loop++)
+
+		time=1000000;
+		while(time>0)
 		{
-			for (i=270; i!=271; i--)
-			{
-				time=2000;
-				while(time<=2000)
-				{
-					DisplayWordGlobe(i,"","DAI HOI IV","HOI SINH VIEN VIET NAM","","");
-					time--;
-				}
-				if (i==1)
-				{
-					i=355;
-				}
-			}
+			DisplayWordGlobe(270,"","HOI SINH VIEN","  VIET NAM  ","","");
+			time--;
 		}
-		DisplayWordGlobe(270,"","      DAI HOC      ","CONG NGHE THONG TIN","","");
-		MiniDelay(500);
-		for (loop=0; loop<2; loop++)
+		for (loop=0; loop<3; loop++)
 		{
 			for (i=270; i!=271; i--)
 			{
-				time=2000;
-				while(time<=2000)
+				time=3000;
+				while(time<=3000)
 				{
-					DisplayWordGlobe(i,"","      DAI HOC      ","CONG NGHE THONG TIN","","");
+					DisplayWordGlobe(i,"","HOI SINH VIEN","   VIET NAM","","");
 					time--;
 				}
 				if (i==1)
-				{
-					i=355;
-				}
+					i=359;
 			}
 		}
+	
 		
-		DisplayWordGlobe(300,"","DAI HOI IV","2018 - 2020","","");
-		MiniDelay(500);
-		for (loop=0; loop<2; loop++)
+		time=1000000;
+		while(time>0)
 		{
-			for (i=300; i!=301; i--)
+			DisplayWordGlobe(273,"","  DAI HOI","2018 - 2020","","");
+			time--;
+		}
+		for (loop=0; loop<3; loop++)
+		{
+			for (i=273; i!=274; i--)
 			{
-				time=2000;
-				while(time<=2000)
+				time=3000;
+				while(time<=3000)
 				{
-					DisplayWordGlobe(i,"","DAI HOI IV","2018 - 2020","","");
+					DisplayWordGlobe(i,"","  DAI HOI","2018 - 2020","","");
 					time--;
 				}
 				if (i==1)
-				{
-					i=355;
-				}
+					i=359;
 			}
 		}
-		DisplayHSVLogo(280);
-		MiniDelay(500);
-		DisplayWordGlobe(300,"","   UIT   ","WE ARE ONE","","");
-		for (loop=0; loop<2; loop++)
-		{
-			for (i=300; i!=301; i--)
+
+			time=1500000;
+			while(time>0)
 			{
-				time=2000;
-				while(time<=2000)
+				DisplayHSVLogo(273);
+				time--;
+			}
+			for (loop=0; loop<3; loop++)
+			{
+				for (i=273; i!=272; i++)
+				{
+					time=5000;
+					while(time<=5000)
+					{
+						DisplayHSVLogo(i);
+						time--;
+					}
+					if (i==359)
+						i=0;
+				}
+			}
+			time=1500000;
+			while(time>0)
+			{
+				DisplayHSVLogo(273);
+				time--;
+			}
+			
+		time=1000000;
+		while(time>0)
+		{
+			DisplayWordGlobe(281,"","   UIT   ","WE ARE ONE","","");
+			time--;
+		}
+		for (loop=0; loop<3; loop++)
+		{
+			for (i=281; i!=282; i--)
+			{
+				time=2500;
+				while(time<=2500)
 				{
 					DisplayWordGlobe(i,"","   UIT   ","WE ARE ONE","","");
 					time--;
@@ -114,13 +134,34 @@ int main(void)
 				}
 			}
 		}
-	}
-}
-
-void MiniDelay(uint16_t Time)
-{
-	for(uint16_t i=0; i<Time; i++)
-	{
-		for(uint16_t j=0; j<6500; j++);
+		
+		for (loop=0; loop<7; loop++)
+		{
+			time=250000;
+			while(time<=250000)
+			{
+				DisplayHeart(335);
+				time--;
+			}
+			time=250000;
+			while(time<=250000)
+			{
+				DisplayWordGlobe(347,"","","UIT", "", "");
+				time--;
+			}
+		}
+			
+		for (loop=0; loop<3; loop++)
+		{
+			for (i=0; i<360; i++)
+			{
+				time=1500;
+				while(time<=1500)
+				{
+					DisplayEarth(i);
+					time--;
+				}
+			}
+		}
 	}
 }
