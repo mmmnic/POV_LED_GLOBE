@@ -160,7 +160,7 @@ void EXTI9_5_IRQHandler(void)
 	if (EXTI_GetITStatus(EXTI_Line9) != RESET)
 	{
 		Rounds++;
-		if (Rounds>=5)
+		if (Rounds>=15)
 		{
 			TimePerAngle=TimingPos/Steps;
 			Rounds=0;

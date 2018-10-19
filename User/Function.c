@@ -334,6 +334,11 @@ uint8_t CharCVT(char c, uint8_t times)
 			uint8_t Dau[5]={0b00010000,0b00010000,0b00010000,0b00010000,0b00010000};
 			return Dau[times];
 		}
+		case '.':
+		{
+			uint8_t Dau[5]={0b0000000,0b000000110,0b00000110,0b00000000,0b00000000};
+			return Dau[times];
+		}
 	}
 	
 	return 0;
