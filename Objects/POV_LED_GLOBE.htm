@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\POV_LED_GLOBE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\POV_LED_GLOBE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Oct 12 18:02:43 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Oct 19 14:25:54 2018
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -333,7 +333,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SendData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHSVLogo
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayCityHSVLogo
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.DebugMon_Handler))
@@ -341,11 +341,11 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[52]"></a>Delay</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
 <BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHSVLogo
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayCityHSVLogo
 </UL>
 
-<P><STRONG><a name="[4f]"></a>DisplayHSVLogo</STRONG> (Thumb, 1422 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayHSVLogo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayHSVLogo &rArr; DisplayLine &rArr; DisplayOneIC
+<P><STRONG><a name="[4f]"></a>DisplayCityHSVLogo</STRONG> (Thumb, 1460 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayCityHSVLogo))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayCityHSVLogo &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
 <LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
@@ -361,7 +361,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOneIC
 </UL>
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHSVLogo
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayCityHSVLogo
 </UL>
 
 <P><STRONG><a name="[53]"></a>DisplayOneIC</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, .\objects\function.o(i.DisplayOneIC))
@@ -497,7 +497,7 @@ Global Symbols
 
 <P><STRONG><a name="[50]"></a>StartPos</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, .\objects\function.o(i.StartPos))
 <BR><BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHSVLogo
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayCityHSVLogo
 </UL>
 
 <P><STRONG><a name="[47]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, .\objects\system_stm32f10x.o(i.SystemInit))
@@ -550,11 +550,11 @@ Global Symbols
 
 <P><STRONG><a name="[75]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 316 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 198 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayHSVLogo
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayCityHSVLogo
 <LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 <LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
