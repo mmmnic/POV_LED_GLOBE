@@ -22,3 +22,5 @@ void DisplayEarth(uint16_t Pos);
 void DisplayHeart(uint16_t Pos);
 void DisplayUITHSVLogo(uint16_t Pos);
 void DisplayCityHSVLogo (uint16_t Pos);
+void DisplayLogoVNU(uint16_t Pos);
+void DisplayLogoUIT(uint16_t Pos);
