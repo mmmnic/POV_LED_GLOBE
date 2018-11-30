@@ -1487,3 +1487,65 @@ void DisplayLogoUIT(uint16_t Pos)
 		ClearData();
 	}
 }
+
+void DisplayLightBulb(uint16_t Pos)
+{
+	if (StartPos(Pos))
+	{
+		//10x0
+		//0
+		DisplayLine(0,0b00000011,0b10000000,0,0);
+		Delay(TimePerAngle);
+		//1
+		DisplayLine(0,0b00000111,0b11000000,0,0);
+		Delay(TimePerAngle);
+		//2
+		DisplayLine(0,0b00001111,0b11100000,0,0);
+		Delay(TimePerAngle);
+		//3
+		DisplayLine(0,0b00011111,0b11111000,0,0);
+		Delay(TimePerAngle);
+		//4
+		DisplayLine(0,0b00111111,0b11111100,0,0);
+		Delay(TimePerAngle);
+		//5
+		DisplayLine(0,0b00111111,0b11111111,0b01000000,0);
+		Delay(TimePerAngle);
+		//6
+		DisplayLine(0,0b00111111,0b11111111,0b01110000,0);
+		Delay(TimePerAngle);
+		//7
+		DisplayLine(0,0b00111111,0b11111111,0b01111000,0);
+		Delay(TimePerAngle);
+		//8
+		DisplayLine(0,0b00111111,0b11111111,0b01111000,0);
+		Delay(TimePerAngle);
+		//9
+		DisplayLine(0,0b00111111,0b11111111,0b01111000,0);
+		Delay(TimePerAngle);
+		
+		//10x1
+		//0
+		DisplayLine(0,0b00111111,0b11111111,0b01110000,0);
+		Delay(TimePerAngle);
+		//1
+		DisplayLine(0,0b00111111,0b11111100,0b01000000,0);
+		Delay(TimePerAngle);
+		//2
+		DisplayLine(0,0b00111111,0b11111000,0,0);
+		Delay(TimePerAngle);
+		//3
+		DisplayLine(0,0b00011111,0b11100000,0,0);
+		Delay(TimePerAngle);
+		//4
+		DisplayLine(0,0b00001111,0b11000000,0,0);
+		Delay(TimePerAngle);
+		//5
+		DisplayLine(0,0b00000111,0b11000000,0,0);
+		Delay(TimePerAngle);
+		//6
+		DisplayLine(0,0b00000011,0b10000000,0,0);
+		Delay(TimePerAngle);
+		ClearData();
+	}
+}

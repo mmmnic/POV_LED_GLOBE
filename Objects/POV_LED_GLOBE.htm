@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\POV_LED_GLOBE.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\POV_LED_GLOBE.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 30 14:57:25 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Fri Nov 30 17:38:53 2018
 <BR><P>
 <H3>Maximum Stack Usage =        120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -334,63 +334,63 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoVNU
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoUIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLightBulb
 </UL>
 
 <P><STRONG><a name="[7]"></a>DebugMon_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, .\objects\stm32f10x_it.o(i.DebugMon_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[53]"></a>Delay</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
+<P><STRONG><a name="[52]"></a>Delay</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, .\objects\function.o(i.Delay))
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoVNU
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoUIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLightBulb
 </UL>
 
-<P><STRONG><a name="[4f]"></a>DisplayLine</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, .\objects\function.o(i.DisplayLine))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DisplayLine &rArr; DisplayOneIC
+<P><STRONG><a name="[4f]"></a>DisplayLightBulb</STRONG> (Thumb, 398 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayLightBulb))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayLightBulb &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOneIC
-</UL>
-<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoVNU
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoUIT
-</UL>
-
-<P><STRONG><a name="[51]"></a>DisplayLogoUIT</STRONG> (Thumb, 770 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayLogoUIT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayLogoUIT &rArr; DisplayLine &rArr; DisplayOneIC
-</UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[51]"></a>DisplayLine</STRONG> (Thumb, 60 bytes, Stack size 24 bytes, .\objects\function.o(i.DisplayLine))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = DisplayLine &rArr; DisplayOneIC
+</UL>
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayOneIC
+</UL>
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoVNU
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLightBulb
 </UL>
 
 <P><STRONG><a name="[54]"></a>DisplayLogoVNU</STRONG> (Thumb, 1182 bytes, Stack size 12 bytes, .\objects\function.o(i.DisplayLogoVNU))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = DisplayLogoVNU &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
-<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[50]"></a>DisplayOneIC</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, .\objects\function.o(i.DisplayOneIC))
+<P><STRONG><a name="[53]"></a>DisplayOneIC</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, .\objects\function.o(i.DisplayOneIC))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DisplayOneIC
 </UL>
-<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
 </UL>
 
 <P><STRONG><a name="[55]"></a>DisplayWordGlobe</STRONG> (Thumb, 352 bytes, Stack size 72 bytes, .\objects\function.o(i.DisplayWordGlobe))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strlen
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
-<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StartPos
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLine
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 <LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CharCVT
 </UL>
@@ -509,10 +509,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ClearData
 </UL>
 
-<P><STRONG><a name="[52]"></a>StartPos</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, .\objects\function.o(i.StartPos))
+<P><STRONG><a name="[50]"></a>StartPos</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, .\objects\function.o(i.StartPos))
 <BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoVNU
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoUIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLightBulb
 </UL>
 
 <P><STRONG><a name="[47]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, .\objects\system_stm32f10x.o(i.SystemInit))
@@ -565,12 +565,12 @@ Global Symbols
 
 <P><STRONG><a name="[76]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, C:\Shit Things\Keil\ARM\ARMCC\Bin\..\lib\armlib\mc_w.l(handlers.o)(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 658 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 280 bytes, Stack size 16 bytes, .\objects\main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = main &rArr; DisplayWordGlobe &rArr; DisplayLine &rArr; DisplayOneIC
 </UL>
 <BR>[Calls]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayWordGlobe
 <LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoVNU
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLogoUIT
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DisplayLightBulb
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Timer
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_Interrupt
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init_GPIO
