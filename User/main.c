@@ -20,57 +20,58 @@ int main(void)
 	
 	while (1)
 	{
-		DisplayLogoUIT(300);
-		/*
+		//Display word "welcome"
 		time=750000;
 		while(time>0)
 		{
-			DisplayWordGlobe(310,"","","WELCOME","","");
+			DisplayWordGlobe(310,"","","WELCOME!","","");
 			time--;
 		}
 		for (loop=0; loop<2; loop++)
 		{
 			for (i=310; i!=311; i--)
 			{
-				time=2500;
-				while(time<=2500)
+				time=3000;
+				while(time<=3000)
 				{
-					DisplayWordGlobe(i,"","","WELCOME","","");
+					DisplayWordGlobe(i,"","","WELCOME!","","");
 					time--;
 				}
 					if (i==1)
-					i=359;
+					i=363;
 			}
 		}
 		
+		// display word "VNU" and "HCM"
 		time=750000;
 		while(time>0)
 		{
-			DisplayWordGlobe(340,"","CLB","CEEC","","");
+			DisplayWordGlobe(340,"","VNU","HCM","","");
 			time--;
 		}
-		for (loop=0; loop<1; loop++)
+		for (loop=0; loop<2; loop++)
 		{
 			for (i=340; i!=341; i--)
 			{
-				time=2500;
-				while(time<=2500)
+				time=5000;
+				while(time<=5000)
 				{
-					DisplayWordGlobe(i,"","CLB","CEEC","","");
+					DisplayWordGlobe(i,"","VNU","HCM","","");
 					time--;
 				}
-				if (i==1)
-					i=359;
+					if (i==1)
+					i=363;
 			}
 		}
 		
+		// display logo VNU HCM
 		time=1000000;
 		while(time>0)
 		{
 			DisplayLogoVNU(280);
 			time--;
 		}
-		for (loop=0; loop<1; loop++)
+		for (loop=0; loop<2; loop++)
 		{
 			for (i=280; i!=279; i++)
 			{
@@ -80,7 +81,7 @@ int main(void)
 					DisplayLogoVNU(i);
 					time--;
 				}
-				if (i==359)
+				if (i==363)
 					i=0;
 			}
 		}
@@ -91,176 +92,82 @@ int main(void)
 			time--;
 		}
 		
-		time=500000;
+		// display word "WE ARE" and " UIT"
+		time=750000;
 		while(time>0)
 		{
-			DisplayEarth(220);
+			DisplayWordGlobe(320,"","WE ARE"," UIT","","");
 			time--;
 		}
 		for (loop=0; loop<2; loop++)
 		{
-			for (i=220; i!=219; i++)
+			for (i=320; i!=321; i--)
 			{
-				time=1500;
-				while(time<=1500)
+				time=3000;
+				while(time<=3000)
 				{
-					DisplayEarth(i);
+					DisplayWordGlobe(i,"","WE ARE"," UIT","","");
 					time--;
 				}
-				if (i==360)
-				{
-					i=0;
-				}
+				if (i==1)
+					i=363;
 			}
 		}
-		time=500000;
-		while(time>0)
-		{
-			DisplayEarth(220);
-			time--;
-		}
 		
+		// display logo UIT
 		time=1000000;
 		while(time>0)
 		{
-			DisplayCityHSVLogo(280);
+			DisplayLogoUIT(320);
 			time--;
 		}
 		for (loop=0; loop<2; loop++)
 		{
-			for (i=280; i!=279; i++)
+			for (i=320; i!=319; i++)
 			{
 				time=5000;
 				while(time<=5000)
 				{
-					DisplayCityHSVLogo(i);
+					DisplayLogoUIT(i);
 					time--;
 				}
-				if (i==359)
+				if (i==363)
 					i=0;
+			}
+		}
+		time=1000000;
+		while(time>0)
+		{
+			DisplayLogoUIT(320);
+			time--;
+		}
+		
+		// display CLB CEEC
+		time=1000000;
+		while(time>0)
+		{
+			DisplayWordGlobe(330,"","CEEC","CLUB","","");
+			time--;
+		}
+		for (loop=0; loop<1; loop++)
+		{
+			for (i=330; i!=331; i--)
+			{
+				time=2500;
+				while(time<=2500)
+				{
+					DisplayWordGlobe(i,"","CEEC","CLUB","","");
+					time--;
+				}
+					if (i==1)
+					i=363;
 			}
 		}
 		time=500000;
 		while(time>0)
 		{
-			DisplayCityHSVLogo(280);
+			DisplayWordGlobe(330,"","CEEC","CLUB","","");
 			time--;
 		}
-		
-		for (loop=0; loop<1; loop++)
-		{
-			time=250000;
-			while(time>0)
-			{
-				DisplayHeart(335);
-				time--;
-			}
-			time=250000;
-			while(time>0)
-			{
-				DisplayHeart(65);
-				time--;
-			}
-			time=250000;
-			while(time>0)
-			{
-				DisplayHeart(155);
-				time--;
-			}
-			time=250000;
-			while(time>0)
-			{
-				DisplayHeart(245);
-				time--;
-			}
-		}
-		for (loop=0; loop<2; loop++)
-		{
-			time=125000;
-			while(time>0)
-			{
-				DisplayHeart(335);
-				time--;
-			}
-			time=125000;
-			while(time>0)
-			{
-				DisplayHeart(65);
-				time--;
-			}
-			time=125000;
-			while(time>0)
-			{
-				DisplayHeart(155);
-				time--;
-			}
-			time=125000;
-			while(time>0)
-			{
-				DisplayHeart(245);
-				time--;
-			}
-		}
-		for (loop=0; loop<3; loop++)
-		{
-			time=62500;
-			while(time>0)
-			{
-				DisplayHeart(335);
-				time--;
-			}
-			time=62500;
-			while(time>0)
-			{
-				DisplayHeart(65);
-				time--;
-			}
-			time=62500;
-			while(time>0)
-			{
-				DisplayHeart(155);
-				time--;
-			}
-			time=62500;
-			while(time>0)
-			{
-				DisplayHeart(245);
-				time--;
-			}
-		}
-		for (loop=0; loop<5; loop++)
-		{
-			time=31250;
-			while(time>0)
-			{
-				DisplayHeart(335);
-				time--;
-			}
-			time=31250;
-			while(time>0)
-			{
-				DisplayHeart(65);
-				time--;
-			}
-			time=31250;
-			while(time>0)
-			{
-				DisplayHeart(155);
-				time--;
-			}
-			time=31250;
-			while(time>0)
-			{
-				DisplayHeart(245);
-				time--;
-			}
-		}
-		time=250000;
-		while(time>0)
-		{
-			DisplayHeart(335);
-			time--;
-		}
-		*/
 	}
 }
