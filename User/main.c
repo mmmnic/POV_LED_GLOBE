@@ -20,19 +20,12 @@ int main(void)
 	uint16_t TempPos=0;
 	while (1)
 	{
-		time=500000;
-		while(time>0)
-		{
-			DisplayLightBulb(255);
-			DisplayWordGlobe(63,"","","SISI","","");
-			time--;
-		}
-		for (loop=0; loop<2; loop++)
+		for (loop=0; loop<1; loop++)
 		{
 			for (i=255; i!=254; i++)
 			{
-				time=10000;
-				while(time<=10000)
+				time=2500;
+				while(time<=2500)
 				{
 					DisplayLightBulb(i);
 					TempPos = i + 168;
@@ -47,27 +40,20 @@ int main(void)
 					i=0;
 			}
 		}
-		time=1000000;
-		while(time>0)
-		{
-			DisplayLightBulb(255);
-			DisplayWordGlobe(63,"","","SISI","","");
-			time--;
-		}
 		
 		// display logo VNU HCM
-		time=1000000;
+		time=500000;
 		while(time>0)
 		{
 			DisplayLogoVNU(280);
 			time--;
 		}
-		for (loop=0; loop<2; loop++)
+		for (loop=0; loop<1; loop++)
 		{
 			for (i=280; i!=279; i++)
 			{
-				time=7500;
-				while(time<=7500)
+				time=4000;
+				while(time<=4000)
 				{
 					DisplayLogoVNU(i);
 					time--;
@@ -76,7 +62,7 @@ int main(void)
 					i=0;
 			}
 		}
-		time=1000000;
+		time=250000;
 		while(time>0)
 		{
 			DisplayLogoVNU(280);
