@@ -17,23 +17,23 @@ int main(void)
 //	ClearData();
 	uint32_t time,i;
 	uint8_t loop;
-	uint16_t TempPos=0;
 	while (1)
 	{
-		for (loop=0; loop<1; loop++)
+		// display logo HSV HCM
+		time=500000;
+		while(time>0)
 		{
-			for (i=255; i!=254; i++)
+			DisplayCityHSVLogo(280);
+			time--;
+		}
+		for (loop=0; loop<2; loop++)
+		{
+			for (i=280; i!=279; i++)
 			{
-				time=2500;
-				while(time<=2500)
+				time=4000;
+				while(time<=4000)
 				{
-					DisplayLightBulb(i);
-					TempPos = i + 168;
-					if (TempPos>362)
-					{
-						TempPos = TempPos - 360;
-					}
-					DisplayWordGlobe(TempPos,"","","SISI","","");
+					DisplayCityHSVLogo(i);
 					time--;
 				}
 				if (i==363)
@@ -41,31 +41,32 @@ int main(void)
 			}
 		}
 		
-		// display logo VNU HCM
 		time=500000;
 		while(time>0)
 		{
-			DisplayLogoVNU(280);
+			DisplayWordGlobe(270,"","DAI HOI HSV", " VIET NAM" ,"   LAN X","");
 			time--;
 		}
-		for (loop=0; loop<1; loop++)
+		for (loop=0; loop <2; loop++)
 		{
-			for (i=280; i!=279; i++)
+			for (i=270; i!=271; i--)
 			{
 				time=4000;
 				while(time<=4000)
 				{
-					DisplayLogoVNU(i);
+					DisplayWordGlobe(i,"","DAI HOI HSV", " VIET NAM" ,"   LAN X","");
 					time--;
 				}
-				if (i==363)
-					i=0;
+				if (i==1)
+				{
+					i=365;
+				}
 			}
 		}
 		time=250000;
 		while(time>0)
 		{
-			DisplayLogoVNU(280);
+			DisplayWordGlobe(270,"","DAI HOI HSV", " VIET NAM" ,"   LAN X","");
 			time--;
 		}
 	}

@@ -21,7 +21,7 @@ void DisplayWordGlobe(uint16_t Pos, char *s1, char *s2, char *s3, char *s4, char
 void DisplayEarth(uint16_t Pos);
 void DisplayHeart(uint16_t Pos);
 void DisplayUITHSVLogo(uint16_t Pos);
-void DisplayCityHSVLogo (uint16_t Pos);
+void DisplayCityHSVLogo(uint16_t Pos);
 void DisplayLogoVNU(uint16_t Pos);
 void DisplayLogoUIT(uint16_t Pos);
 void DisplayLightBulb(uint16_t Pos);
