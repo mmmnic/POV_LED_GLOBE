@@ -7,6 +7,6 @@ this project uses the ARM microprocessor, specificaly is the stm32f103c8t6 devel
 
 the project was develop by using standard periphal library.
 
-hope you enjoy it, any question please mail for me at: 16521006@gm.uit.edu.vn
+hope you enjoy it, any question please send a mail for me at: 16521006@gm.uit.edu.vn
 
 Image and video:
