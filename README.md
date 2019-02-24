@@ -9,4 +9,4 @@ the project was develop by using standard periphal library.
 
 hope you enjoy it, any question please send a mail for me at: 16521006@gm.uit.edu.vn
 
-Image and video:
+Images and videos: https://drive.google.com/drive/folders/1k-DiviHWCkfzGB2PKKZX_XjES3PdY4LW?usp=sharing
