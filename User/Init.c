@@ -19,7 +19,7 @@ void Init_GPIO(void)
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 	
-	// Config GPIOB, Pin 9 as input, Pull up
+	// Config GPIOB, Pin 9 as input
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
@@ -47,8 +47,8 @@ void Init_Timer(void)
 	
 	// Enable clock
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
 	
+	// Clock for APB1 for TIM2 is 32.5 MHz
 	// Configure TIM2
 	// prescaler = 1,  Period = 35 for 0.000,001(s)
 	// prescaler = 9,  Period = 71 for 0.000,01	(s)
@@ -84,7 +84,6 @@ void Init_Interrupt(void)
 	
 	// Open clock
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
-	
 	
 	// Connect EXTI9 Line to PB9 pin */
 	GPIO_EXTILineConfig(GPIO_PortSourceGPIOB, GPIO_PinSource9);
