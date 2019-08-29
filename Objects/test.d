@@ -1,0 +1,15 @@
+.\objects\test.o: User\test.c
+.\objects\test.o: User\Function.h
+.\objects\test.o: .\User\Init.h
+.\objects\test.o: .\User\stm32f10x_conf.h
+.\objects\test.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h
+.\objects\test.o: .\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\objects\test.o: .\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
+.\objects\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\test.o: .\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\objects\test.o: .\User\stm32f10x_conf.h
+.\objects\test.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
+.\objects\test.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\objects\test.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h
+.\objects\test.o: .\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
+.\objects\test.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

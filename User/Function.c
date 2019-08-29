@@ -285,7 +285,7 @@ uint8_t CharCVT(char c, uint8_t times)
 		}
 		case '1':
 		{
-			uint8_t So[5]={0b00000000,0b01000100,0b11111110,0b00000010,0b00000000};
+			uint8_t So[5]={0b00000000,0b01000010,0b11111110,0b00000010,0b00000000};
 			return So[times];
 		}
 		case '2':
@@ -300,7 +300,7 @@ uint8_t CharCVT(char c, uint8_t times)
 		}
 		case '4':
 		{
-			uint8_t So[5]={0b00011000,0b00101000,0b01001000,0b11111111,0b00001000};
+			uint8_t So[5]={0b00011000,0b00101000,0b01001000,0b11111110,0b00001000};
 			return So[times];
 		}
 		case '5':
@@ -330,12 +330,17 @@ uint8_t CharCVT(char c, uint8_t times)
 		}
 		case '-':
 		{
-			uint8_t Dau[5]={0b0001000,0b00010000,0b00010000,0b00010000,0b00010000};
+			uint8_t Dau[5]={0b00010000,0b00010000,0b00010000,0b00010000,0b00010000};
 			return Dau[times];
 		}
 		case '!':
 		{
-			uint8_t Dau[5]={0b0000000,0b00000000,0b11111010,0b00000000,0b00000000};
+			uint8_t Dau[5]={0b00000000,0b00000000,0b11111010,0b00000000,0b00000000};
+			return Dau[times];
+		}
+		case ':':
+		{
+			uint8_t Dau[5]={0b00000000,0b00100100,0b00100100,0b00000000,0b00000000};
 			return Dau[times];
 		}
 	}
@@ -343,17 +348,41 @@ uint8_t CharCVT(char c, uint8_t times)
 	return 0;
 }
 
+uint8_t *convertToInt(uint8_t data[40][17], uint8_t column)
+{
+	uint8_t i=0, prePos=0;
+	static uint8_t I_data[5];
+	int8_t dataPos=4;
+	
+	while (dataPos >=0)
+	{
+		for (i=prePos; i<8+prePos; i++)
+		{
+			if (data[i][column] == 1)
+			{
+				I_data[dataPos] *= 0b10;
+				I_data[dataPos] += 0b1;
+			}
+			else
+				I_data[dataPos] *= 0b10;
+		}
+		dataPos--;
+		prePos+=8;
+	}
+	return I_data;
+}
 /**
   * @brief  Globe is divided into 5 rows, Display any word on any row 
   * @param  Input Start position, char for each row
   * @retval None
 	*/
-void DisplayWordsGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, char *s4)
+void DisplayWordsGlobe(uint16_t Pos, char s0[], char s1[], char s2[], char s3[], char s4[])
 {
 	if (StartPos(Pos))
 	{
 		// Find longest word
-		uint8_t i, max,Data[5], ArrStrLen[5] = {strlen(s0), strlen(s1), strlen(s2), strlen(s3), strlen(s4)};
+		uint8_t max, Data[5], ArrStrLen[5] = {strlen(s0), strlen(s1), strlen(s2), strlen(s3), strlen(s4)};
+		int16_t i;
 		max = ArrStrLen[0];
 		for (i=1; i<5; i++)
 		{
@@ -426,34 +455,79 @@ void DisplayWordsGlobe(uint16_t Pos, char *s0, char *s1, char *s2, char *s3, cha
 	ClearData();	
 }
 
-void DisplayWordsMove(uint16_t Pos, char *s1, char *s2, char *s3, char *s4, char *s5)
+
+void DisplayWordsMove(int32_t speed, char s0[], char s1[], char s2[], char s3[], char s4[])
 {
-	uint8_t count=0;
-//	uint16_t DesPos;
-	uint32_t time;
+	// 15 blanks
+	char data1[60] = "                 ",
+			 data2[140] = "                 ",
+	     data3[60] = "                 ";
+	int32_t time, i;
+	uint8_t prePos=0, flag=0, max;
 	
-	char *tempS1, *tempS2, *tempS3, *tempS4, *tempS5;
+	// add input string to an temporary para
+	strcat(data1,s1);
+	strcat(data2,s2);
+	strcat(data3,s3);
 	
-//	if (Pos<=45)
-//		Pos = 360;
-//	DesPos = Pos-45;
+	uint8_t ArrStrLen[3] = {strlen(data1), strlen(data2), strlen(data3)};
+	// 20 blanks
+	strcpy(s1,"                 ");
+	strcpy(s2,"                 ");
+	strcpy(s3,"                 ");
 	
-	for (int i=180; i!=135; i++)
+	// find longhest string
+	max = ArrStrLen[0];
+	for (i=1; i<3; i++)
 	{
-		time=2500;
-		count++;
-		while(time<=2500)
+		if (ArrStrLen[i]>max)
 		{
-			DisplayWordsGlobe(i, tempS1, tempS2, tempS3, tempS4, tempS5);
+			max = ArrStrLen[i];
+		}
+	}
+	
+	// limit show lenght to 17 words
+	s1[18]='\0';
+	s2[18]='\0';
+	s3[18]='\0';
+	
+	prePos=0;
+	flag=0;
+	for (prePos=0; flag == 0; prePos++)
+	{
+		time=speed;
+		while(time>=1)
+		{
+			DisplayWordsGlobe(220,"",s1,s2,s3,"");
 			time--;
 		}
-		if (i==363)
-			i=0;
-		if (count == 4)
-			tempS3+=
-			count=0;
+		for (i=prePos; i<16+prePos; i++)
+		{
+			if (i > strlen(data1))
+				s1[i-prePos]=' ';
+			else
+				s1[i-prePos]=data1[i+1];
+		
+			if (i > strlen(data2))
+				s2[i-prePos]=' ';
+			else
+				s2[i-prePos]=data2[i+1];
+			
+			if (i > strlen(data3))
+				s3[i-prePos]=' ';
+			else
+				s3[i-prePos]=data3[i+1];
+			
+			
+			if (i-16 == max)
+			{
+				flag=1;
+				break;
+			}
+		}
 	}
 }
+
 void DisplayEarth(uint16_t Pos)
 {
 	if (StartPos(Pos))
@@ -1671,7 +1745,7 @@ void DisplayLogoFIRA(uint16_t Pos)
 		DisplayLine(0b00011000,0b00000010,0b10000000,0b11100000,0b00110000);
 		Delay(TimePerAngle);
 		//8
-		DisplayLine(0b00011000,0b00100000,0b10000001,0b00000010,0b00110000);
+		DisplayLine(0b00011000,0b00000010,0b10000001,0b00100000,0b00110000);
 		Delay(TimePerAngle);
 		//9
 		DisplayLine(0b00011000,0,0b00000001,0b00100000,0b00110000);
@@ -1703,10 +1777,10 @@ void DisplayLogoFIRA(uint16_t Pos)
 		DisplayLine(0b00000111,0b10000010,0b10010000,0b00000001,0b11000000);
 		Delay(TimePerAngle);
 		//8
-		DisplayLine(0b00000011,0b10000001,0b11010000,0b00000111,0b10000000);
+		DisplayLine(0b00000011,0b10000010,0b10010000,0b00000111,0b10000000);
 		Delay(TimePerAngle);
 		//9
-		DisplayLine(0b00000001,0b11000000,0b00011000,0b00001111,0);
+		DisplayLine(0b00000001,0b11000001,0b11011000,0b00001111,0);
 		Delay(TimePerAngle);
 		
 		//10x4
@@ -1734,3 +1808,4 @@ void DisplayLogoFIRA(uint16_t Pos)
 		ClearData();
 	}
 }
+
